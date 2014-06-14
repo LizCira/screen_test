@@ -1,0 +1,27 @@
+#radar_chart {
+  float: right;
+  width: 300px;
+  height: 300px;
+  border: 1px solid #333;
+}
+
+#trash_bin {
+  position: absolute;
+  bottom: 0;
+  width: 100px;
+  height: 100px;
+  border: 1px solid #333;
+}
+
+#film_feed {
+  float: left;
+  width: 500px;
+  height: 500px;
+  border: 1px solid #333;
+  overflow: scroll;
+}
+
+#film_card {
+  width: 500px;
+  height: 500px;
+}
