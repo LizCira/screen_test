@@ -1,3 +1,7 @@
+# def movie_info(title, year=nil)
+#    response_hash = JSON.parse(HTTParty.get("http://www.omdbapi.com/?t=#{title}&y=#{year}").body)
+# end
+
 Movie.delete_all
 
 movies = ["12 Angry Men",
@@ -253,3 +257,4 @@ movies.each do |title|
     plot: movie_hash["Plot"]
     })
 end
+
