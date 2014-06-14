@@ -28,6 +28,25 @@ function MoviesCollection(){
 }
 
 
+MoviesCollection.prototype.add = function(movieJSON){
+  var newMovie = new Movie(movieJSON);
+  this.models[movieJSON.id] = newMovie;
+}
+
+
+MoviesCollection.prototype.fetch = function(){
+  $.ajax({
+    url: '/movies',
+    type: 'GET',
+    dataType: 'JSON'
+  }).done(function(data){
+    for (id in data){
+      moviesCollection.add(data[id]);
+    }
+  });
+}
+
+
 
 // *************************************
 var moviesCollection = new MoviesCollection();
@@ -37,9 +56,12 @@ var moviesCollection = new MoviesCollection();
 
 
 function setEventListeners(){
-
-
   
+  // executes when complete page is fully loaded, including all frames, objects and images
+  // done this way because we want our posters to load AFTER the rest of the page has finished loading
+  $(window).load(function(){
+    moviesCollection.fetch();
+  });
 }
 
 
@@ -52,4 +74,8 @@ $(function(){
 
   setEventListeners();
 
+
+
 });
+
+
