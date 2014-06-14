@@ -1,6 +1,9 @@
-
 // ************ Model *************
 
+function Customer(customerJSON){
+  this.user_id = customerJSON.name;
+  this.movie_id = customerJSON.id;
+}
 
 
 // ************ View *************
@@ -11,6 +14,11 @@ function LikeCollection(){
   this.models = {};
 }
 
+LikeCollection.prototype.add = function(likeJSON){
+  var newLike = new Like(likeJSON);
+  this.models[likeJSON.id] = newLike; //adding to the array created above
+}
+
 LikeCollection.prototype.create = function(paramObject){
 
   $.ajax({
@@ -18,24 +26,19 @@ LikeCollection.prototype.create = function(paramObject){
     method: 'post',
     dataType: 'json',
     data: {like: paramObject}
+  }).done(function(data){
+    likeCollection.add(data);
   })
+}
 
+var likeCollection = new LikeCollection();
 
 $(function(){
-
 // below is pseudo code for securing values of like after selection trigger
 $("#radar_chart").on('drop', function(e){
-
-  var currentUserId = $.ajax({
-    url: '/likes',
-    method: 'get',
-    dataType: 'json'
-    })
-
+//need to get the movie ID from object dropped here
   var chosenMovieId =
-
   likeCollection.create({
-  user_id: currentUserId,
   movie_id: chosenMovieId
 });
 

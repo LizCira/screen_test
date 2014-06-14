@@ -1,9 +1,14 @@
 class LikesController < ApplicationController
 
+respond_to :json
+
   def create
 
-    userid = current_user.id
-    format.json { render json: userid }
+    like = Like.new
+    like.user_id =  current_user.id
+    like.movie_id = params[]
+    like.save!
+    respond_with like
 
   end
 
@@ -14,3 +19,5 @@ class LikesController < ApplicationController
   end
 
 end
+
+# like_attributes[:movie_id]
