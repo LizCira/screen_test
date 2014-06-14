@@ -1,0 +1,24 @@
+<div id="contentMain">
+
+  <h1>Screen Test</h1>
+
+  <div id="filmFeed">
+    <div id="filmCard">
+      <% @movies.each do |movie| %>
+        <img src="<%= movie.poster %>"/>
+        <p><%= movie.title %></p>
+        <p><%= movie.year %></p>
+      <% end %>
+    </div>
+  </div>
+
+
+  <div id="radarChart">
+
+  </div>
+
+
+  <div id="trashBin">
+
+  </div>
+</div>
