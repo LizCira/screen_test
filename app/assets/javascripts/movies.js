@@ -1,19 +1,26 @@
 $(document).ready(function() {
 
   $('.film_card').draggable({
-      containment: 'document',
-      // stack: '#film_feed div',
+      // containment: '#content_main',
+      stack: '#film_feed',
       cursor: 'move',
-      // revert: true
+      revert: true
   });
 
 
   $('#radar_chart').droppable({
-    accept: 'film_card div',
-
+    accept: '.film_card',
+    hoverClass: 'hovered',
+    drop: handleCardDrop
 
   });
 
 
-
 })
+
+function handleCardDrop( event, ui ) {
+  ui.draggable.draggable( 'option', 'revert', false );
+  ui.draggable.hide();
+
+
+  }

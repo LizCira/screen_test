@@ -16,12 +16,18 @@
 #film_feed {
   float: left;
   width: 500px;
-  height: 500px;
+/*  height: 500px;*/
   border: 1px solid #333;
-  overflow: scroll;
+  /*overflow: scroll;*/
 }
 
-#film_card {
-  width: 500px;
-  height: 500px;
+
+#radar_chart div.hovered {
+  background: #333;
 }
+
+
+
+
+
+
