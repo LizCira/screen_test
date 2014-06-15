@@ -76,12 +76,16 @@ function displayAllMovies(){
 }
 // callback function for carddrop
 function likeCreate(cardId) {
+  console.log(cardId);
   $.ajax({
     url: '/movies/'+ cardId + '/likes',
     type: 'POST',
-    dataType: 'JSON'
+    dataType: 'JSON',
+    data: {like: cardId},
+    beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))}
   }).done(function(data){
     console.log(data);
+    console.log(data.movie_id);
   });
 }
 
@@ -89,10 +93,8 @@ function likeCreate(cardId) {
 function handleCardDrop( event, ui ) {
   ui.draggable.draggable( 'option', 'revert', false );
   ui.draggable.hide();
-  ui.draggable.val("liked");
   var likedCardId = ui.draggable.attr('id');
   likeCreate(likedCardId);
-  // into a like collection of pending ajax api get request
 }
 
 
@@ -139,10 +141,9 @@ $('#film_feed').on('click', '.film_card', function(){console.log($(this).attr("i
     drop: function( event, ui ) {
     ui.draggable.draggable( 'option', 'revert', false );
     ui.draggable.hide();
-    ui.draggable.val("trashed");
     console.log(ui.draggable.attr("id"));
     var cardId = ui.draggable.attr("id")
-    blah(cardId);
+    // blah(cardId);
     }
 
   });
