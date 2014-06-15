@@ -29,7 +29,7 @@ MovieView.prototype.render = function(){
   });
 
   // LIZ -- trying to isolate SELECTED film_card id variable
-      // $(".film_card").on('click', function(){
+      // $(".film_card").on('click', '#film-card',function(){
       //   var self = this
       //   console.log( self.attr("id") );})
 
@@ -105,13 +105,14 @@ function handleCardDrop( event, ui ) {
 var moviesCollection = new MoviesCollection();
 // *************************************
 
+//RESOLVES FILM CARD ID ISSUE
+  $('#film_feed').on('click', '.film_card', function(){console.log($(this).attr("id"));});
 
 
 
 function setEventListeners(){
   $(moviesCollection).on('refresh', function(){
     displayAllMovies();
-
   });
 
   // executes when complete page is fully loaded, including all frames, objects and images
@@ -120,9 +121,7 @@ function setEventListeners(){
     moviesCollection.fetch();
   });
 
-
-
-
+  
 
   // *********************BEN********************
 
