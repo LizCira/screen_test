@@ -19,6 +19,12 @@ MovieView.prototype.render = function(){
 // where the template will go?
   var newElement = $('<div class="film_card" id="' + this.model.id + '">').html(this.model.title);
   this.el = newElement;
+  $('.film_card').draggable({
+    // containment: '#content_main',
+    stack: '#film_feed',
+    cursor: 'move',
+    revert: true
+  });
   return this;
 }
 
@@ -94,12 +100,6 @@ function setEventListeners(){
 
 
   // *********************BEN********************
-  $('.film_card').draggable({
-      // containment: '#content_main',
-      stack: '#film_feed',
-      cursor: 'move',
-      revert: true
-  });
 
 
   $('#radar_chart').droppable({
