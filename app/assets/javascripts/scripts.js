@@ -15,7 +15,12 @@ function MovieView(model){
   this.el = undefined;
 }
 
-
+MovieView.prototype.render = function(){
+// where the template will go?
+  var newElement = $('<div class="film_card" id="' + this.model.id + '">').html(this.model.title);
+  this.el = newElement;
+  return this;
+}
 
 
 
@@ -31,6 +36,7 @@ function MoviesCollection(){
 MoviesCollection.prototype.add = function(movieJSON){
   var newMovie = new Movie(movieJSON);
   this.models[movieJSON.id] = newMovie;
+  $(this).trigger('refresh');
 }
 
 
@@ -47,6 +53,17 @@ MoviesCollection.prototype.fetch = function(){
 }
 
 
+// named functions
+function displayAllMovies(){
+  $('#film_feed').html('');
+
+  for(id in moviesCollection.models){
+    var movie = moviesCollection.models[id];
+    var movieView = new MovieView(movie);
+    $('#film_feed').append(movieView.render().el);
+  }
+
+}
 
 // *************************************
 var moviesCollection = new MoviesCollection();
@@ -56,7 +73,9 @@ var moviesCollection = new MoviesCollection();
 
 
 function setEventListeners(){
-  
+  $(moviesCollection).on('refresh', function(){
+    displayAllMovies();
+  });
   // executes when complete page is fully loaded, including all frames, objects and images
   // done this way because we want our posters to load AFTER the rest of the page has finished loading
   $(window).load(function(){
@@ -73,8 +92,10 @@ function setEventListeners(){
 $(function(){
 
   setEventListeners();
+  
+  moviesCollection.fetch();
 
-
+  // displayAllMovies();
 
 });
 
