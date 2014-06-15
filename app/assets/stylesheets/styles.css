@@ -1,0 +1,37 @@
+#radar_chart {
+  float: right;
+  width: 300px;
+  height: 300px;
+  border: 1px solid #333;
+}
+
+#trash_bin {
+  position: relative;
+  float: right;
+  width: 300px;
+  height: 300px;
+  margin-right: 200px;
+  border: 1px solid #333;
+}
+
+#film_feed {
+  float: left;
+  width: 500px;
+/*  height: 500px;*/
+  border: 1px solid #333;
+  /*overflow: scroll;*/
+}
+
+
+#radar_chart div.hovered {
+  background: #333;
+}
+
+.highlight {
+    border: 1px solid yellow;
+    background-color:yellow;
+}
+
+
+
+

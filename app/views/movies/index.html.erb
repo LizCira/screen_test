@@ -1,25 +1,25 @@
-<div id="contentMain">
+<div id="content_main">
 
   <h1>Screen Test</h1>
 
 
-  <div id="filmFeed">
-    <div id="filmCard">
-      <% @movies.each do |movie| %>
-        <img src="<%= movie.poster %>"/>
-        <p><%= movie.title %></p>
-        <p><%= movie.year %></p>
-      <% end %>
-    </div>
+  <div id="film_feed">
+    <% @movies.each do |movie| %>
+      <div class="film_card">
+          <img src="<%= movie.poster %>"/>
+          <p><%= movie.title %></p>
+          <p><%= movie.year %></p>
+      </div>
+    <% end %>
   </div>
 
 
-  <div id="radarChart">
-
+  <div id="radar_chart">
+    radar chart
   </div>
 
 
-  <div id="trashBin">
-
+  <div id="trash_bin">
+    trash bin
   </div>
 </div>
