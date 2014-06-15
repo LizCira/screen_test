@@ -3,21 +3,21 @@ class LikesController < ApplicationController
 respond_to :json
 
   def create
-binding.pry
-    newlike = Like.new
-    like.user_id =  current_user.id
-    like.movie_id = ##?? like_attributes[:movie_id]
-    like.save!
-    respond_with newlike
 
+    approved = Like.create({
+      user_id: current_user.id,
+      movie_id: likes_attributes[:movie_id],
+      approve: true
+    })
+    
+    # respond_with approved
+    render json: approved 
   end
 
   private
 
-  def like_attributes
-    params.require(:like).permit(:user_id, :movie_id)
+  def likes_attributes
+    params.require(:like).permit(:movie_id)
   end
 
 end
-
-# like_attributes[:movie_id]
