@@ -21,7 +21,7 @@ MovieView.prototype.render = function(){
   this.el = newElement;
   $('.film_card').draggable({
   // $('.film_card # + self.attr("id")').draggable({
-  // $(".film_card + #354") -- syntax to select a single card
+  // $(".film_card + #354") -- jquery syntax to select a single card
     // containment: '#content_main',
     stack: '#film_feed',
     cursor: 'move',
@@ -89,13 +89,13 @@ function handleCardDrop( event, ui ) {
   // some other function gets called here
   //AJAX POST call here!
   console.log("dropped");
-  console.log($(".film_card").attr("id"));
+  console.log($('.film_card').attr("id"));
   //consolelogs are there for debugging
-    data = $(".film_card").attr("id")
+    data = $('.film_card').attr("id")
   $.ajax({
     url: '/movies/'+ data + '/likes',
     method: 'post',
-    beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+    // beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
     dataType: 'json',
     data: data
   })
