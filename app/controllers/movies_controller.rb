@@ -10,7 +10,7 @@ class MoviesController < ApplicationController
 
     # movies = shuffled_movies.pop(10)
 
-    
+
 
     respond_with movies
   end

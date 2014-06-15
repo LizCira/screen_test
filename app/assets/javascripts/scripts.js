@@ -20,9 +20,6 @@ MovieView.prototype.render = function(){
   var newElement = $('<div class="film_card" id="' + this.model.id + '">').html(this.model.title);
   this.el = newElement;
   $('.film_card').draggable({
-  // $('.film_card # + self.attr("id")').draggable({
-  // $(".film_card + #354") -- jquery syntax to select a single card
-    // containment: '#content_main',
     stack: '#film_feed',
     cursor: 'move',
     revert: true
@@ -86,19 +83,6 @@ function displayAllMovies(){
 function handleCardDrop( event, ui ) {
   ui.draggable.draggable( 'option', 'revert', false );
   ui.draggable.hide();
-  // some other function gets called here
-  //AJAX POST call here!
-  // console.log("dropped");
-  // console.log($('.film_card').attr("id"));
-  // consolelogs are there for debugging
-  //   data = $('.film_card').attr("id")
-  // $.ajax({
-  //   url: '/movies/'+ data + '/likes',
-  //   method: 'post',
-  //   // beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
-  //   dataType: 'json',
-  //   data: data
-  // })
 }
 
 // *************************************
@@ -111,7 +95,6 @@ var moviesCollection = new MoviesCollection();
 function setEventListeners(){
   $(moviesCollection).on('refresh', function(){
     displayAllMovies();
-
   });
 
   // executes when complete page is fully loaded, including all frames, objects and images
@@ -130,16 +113,19 @@ function setEventListeners(){
   $('#radar_chart').droppable({
     accept: '.film_card',
     hoverClass: 'highlight',
+    tolerance: 'pointer',
     drop: handleCardDrop
   });
 
   $('#trash_bin').droppable({
     accept: '.film_card',
     hoverClass: 'highlight',
+    tolerance: 'pointer',
     drop: function( event, ui ) {
     ui.draggable.draggable( 'option', 'revert', false );
     ui.draggable.hide();
     }
+
   });
   // *********************************************
 }
@@ -155,7 +141,5 @@ $(function(){
   setEventListeners();
 
 });
-
-
 
 
