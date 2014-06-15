@@ -4,12 +4,12 @@ respond_to :json
 
   def create
 # binding.pry
-  like = Like.create({
-  user_id: current_user.id,
-  movie_id: params["movie_id"]
-  })
+    like = Like.create({
+    user_id: current_user.id,
+    movie_id: params["movie_id"]
+    })
 
-  respond_with like
+    respond_with like
 
   end
 
