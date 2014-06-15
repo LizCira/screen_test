@@ -5,7 +5,6 @@ function Customer(customerJSON){
   this.movie_id = customerJSON.id;
 }
 
-
 // ************ View *************
 
 
@@ -20,7 +19,6 @@ LikeCollection.prototype.add = function(likeJSON){
 }
 
 LikeCollection.prototype.create = function(paramObject){
-
   $.ajax({
     url: '/likes',
     method: 'post',
@@ -34,13 +32,14 @@ LikeCollection.prototype.create = function(paramObject){
 var likeCollection = new LikeCollection();
 
 $(function(){
-// below is pseudo code for securing values of like after selection trigger
-$("#radar_chart").on('drop', function(e){
+// below is pseudo code for securing values of new Like after selection trigger
+$("#film_feed").on('drop', function(){
 //need to get the movie ID from object dropped here
-  var chosenMovieId =
+ var chosenMovieId = $(this).attr("id")
+//syntax for drag/drop object???
   likeCollection.create({
   movie_id: chosenMovieId
 });
 
 
-});
+})

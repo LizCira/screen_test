@@ -3,12 +3,12 @@ class LikesController < ApplicationController
 respond_to :json
 
   def create
-
-    like = Like.new
+binding.pry
+    newlike = Like.new
     like.user_id =  current_user.id
-    like.movie_id = params[]
+    like.movie_id = ##?? like_attributes[:movie_id]
     like.save!
-    respond_with like
+    respond_with newlike
 
   end
 
