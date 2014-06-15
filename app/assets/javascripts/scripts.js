@@ -20,18 +20,10 @@ MovieView.prototype.render = function(){
   var newElement = $('<div class="film_card" id="' + this.model.id + '">').html(this.model.title);
   this.el = newElement;
   $('.film_card').draggable({
-  // $('.film_card # + self.attr("id")').draggable({
-  // $(".film_card + #354") -- jquery syntax to select a single card
-    // containment: '#content_main',
     stack: '#film_feed',
     cursor: 'move',
     revert: true
   });
-
-  // LIZ -- trying to isolate SELECTED film_card id variable
-      // $(".film_card").on('click', function(){
-      //   var self = this
-      //   console.log( self.attr("id") );})
 
   return this;
 }
@@ -66,6 +58,7 @@ MoviesCollection.prototype.fetch = function(){
   });
 }
 
+
 // ******************LIKES MODEL******************
 
 
@@ -81,25 +74,27 @@ function displayAllMovies(){
   }
 
 }
+// callback function for carddrop
+function likeCreate(cardId) {
+  $.ajax({
+    url: '/movies/'+ cardId + '/likes',
+    type: 'POST',
+    dataType: 'JSON'
+  }).done(function(data){
+    console.log(data);
+  });
+}
 
 // Ben's named function
 function handleCardDrop( event, ui ) {
   ui.draggable.draggable( 'option', 'revert', false );
   ui.draggable.hide();
-  // some other function gets called here
-  //AJAX POST call here!
-  console.log("dropped");
-  console.log($('.film_card').attr("id"));
-  //consolelogs are there for debugging
-    data = $('.film_card').attr("id")
-  $.ajax({
-    url: '/movies/'+ data + '/likes',
-    method: 'post',
-    // beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
-    dataType: 'json',
-    data: data
-  })
+  ui.draggable.val("liked");
+  var likedCardId = ui.draggable.attr('id');
+  likeCreate(likedCardId);
+  // into a like collection of pending ajax api get request
 }
+
 
 // *************************************
 var moviesCollection = new MoviesCollection();
@@ -113,6 +108,10 @@ function setEventListeners(){
     displayAllMovies();
 
   });
+
+$('#film_feed').on('click', '.film_card', function(){console.log($(this).attr("id"));
+  var ID = $(this).attr("id")
+});
 
   // executes when complete page is fully loaded, including all frames, objects and images
   // done this way because we want our posters to load AFTER the rest of the page has finished loading
@@ -130,15 +129,21 @@ function setEventListeners(){
   $('#radar_chart').droppable({
     accept: '.film_card',
     hoverClass: 'highlight',
+    tolerance: 'pointer',
     drop: handleCardDrop
   });
 
   $('#trash_bin').droppable({
     accept: '.film_card',
     hoverClass: 'highlight',
+    tolerance: 'pointer',
     drop: function( event, ui ) {
     ui.draggable.draggable( 'option', 'revert', false );
     ui.draggable.hide();
+    ui.draggable.val("trashed");
+    console.log(ui.draggable.attr("id"));
+    var cardId = ui.draggable.attr("id")
+    blah(cardId);
     }
   });
   // *********************************************
