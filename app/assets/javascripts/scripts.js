@@ -77,11 +77,14 @@ function displayAllMovies(){
 // callback function for carddrop
 function likeCreate(cardId) {
   console.log(cardId);
+
+  // var cardIdJSON = {movie_id: cardId};
+
   $.ajax({
     url: '/movies/'+ cardId + '/likes',
     type: 'POST',
     dataType: 'JSON',
-    data: {like: cardId},
+    // data: cardIdJSON,
     beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))}
   }).done(function(data){
     console.log(data);
@@ -143,7 +146,6 @@ $('#film_feed').on('click', '.film_card', function(){console.log($(this).attr("i
     ui.draggable.hide();
     console.log(ui.draggable.attr("id"));
     var cardId = ui.draggable.attr("id")
-    // blah(cardId);
     }
 
   });
