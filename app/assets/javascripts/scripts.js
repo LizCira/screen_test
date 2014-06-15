@@ -88,17 +88,17 @@ function handleCardDrop( event, ui ) {
   ui.draggable.hide();
   // some other function gets called here
   //AJAX POST call here!
-  console.log("dropped");
-  console.log($('.film_card').attr("id"));
-  //consolelogs are there for debugging
-    data = $('.film_card').attr("id")
-  $.ajax({
-    url: '/movies/'+ data + '/likes',
-    method: 'post',
-    // beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
-    dataType: 'json',
-    data: data
-  })
+  // console.log("dropped");
+  // console.log($('.film_card').attr("id"));
+  // consolelogs are there for debugging
+  //   data = $('.film_card').attr("id")
+  // $.ajax({
+  //   url: '/movies/'+ data + '/likes',
+  //   method: 'post',
+  //   // beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+  //   dataType: 'json',
+  //   data: data
+  // })
 }
 
 // *************************************
