@@ -20,11 +20,19 @@ MovieView.prototype.render = function(){
   var newElement = $('<div class="film_card" id="' + this.model.id + '">').html(this.model.title);
   this.el = newElement;
   $('.film_card').draggable({
+  // $('.film_card # + self.attr("id")').draggable({
+  // $(".film_card + #354") -- jquery syntax to select a single card
     // containment: '#content_main',
     stack: '#film_feed',
     cursor: 'move',
     revert: true
   });
+
+  // LIZ -- trying to isolate SELECTED film_card id variable
+      // $(".film_card").on('click', function(){
+      //   var self = this
+      //   console.log( self.attr("id") );})
+
   return this;
 }
 
@@ -58,6 +66,9 @@ MoviesCollection.prototype.fetch = function(){
   });
 }
 
+// ******************LIKES MODEL******************
+
+
 
 // named functions
 function displayAllMovies(){
@@ -75,8 +86,20 @@ function displayAllMovies(){
 function handleCardDrop( event, ui ) {
   ui.draggable.draggable( 'option', 'revert', false );
   ui.draggable.hide();
+  // some other function gets called here
+  //AJAX POST call here!
+  console.log("dropped");
+  console.log($('.film_card').attr("id"));
+  //consolelogs are there for debugging
+    data = $('.film_card').attr("id")
+  $.ajax({
+    url: '/movies/'+ data + '/likes',
+    method: 'post',
+    // beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+    dataType: 'json',
+    data: data
+  })
 }
-
 
 // *************************************
 var moviesCollection = new MoviesCollection();
@@ -88,7 +111,9 @@ var moviesCollection = new MoviesCollection();
 function setEventListeners(){
   $(moviesCollection).on('refresh', function(){
     displayAllMovies();
+
   });
+
   // executes when complete page is fully loaded, including all frames, objects and images
   // done this way because we want our posters to load AFTER the rest of the page has finished loading
   $(window).load(function(){
@@ -130,5 +155,7 @@ $(function(){
   setEventListeners();
 
 });
+
+
 
 
