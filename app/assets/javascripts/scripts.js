@@ -24,8 +24,6 @@ MovieView.prototype.render = function(){
     cursor: 'move',
     revert: true
   });
-
-
   return this;
 }
 
