@@ -33,7 +33,8 @@
 
 // $(function(){
 // // below is pseudo code for securing values of new Like after selection trigger
-// $("#film_feed").on('drop', function(){
+// $("#radar_chart").on('droppable', function(){
+//   console.log("dropped")
 // //need to get the movie ID from object dropped here
 //  var chosenMovieId = $(this).attr("id")
 // //syntax for drag/drop object???
