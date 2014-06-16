@@ -5,8 +5,9 @@ respond_to :json
   def create
 
     approved = Like.create({
-      user_id: current_user.id,
-      movie_id: likes_attributes[:movie_id],
+      user_id: http://current_user.id,
+      # movie_id: likes_attributes[:movie_id],
+      movie_id: params[:movie_id],
       approve: true
     })
     
