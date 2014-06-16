@@ -1,5 +1,5 @@
 // ******* Chart function *******
-var cdata = [65,59,90,81,56,55,40];
+var cdata = [0,0,0,0,0,0,0];
 
 function chartShell(){
 var radarChartData = {
@@ -108,7 +108,7 @@ LikesCollection.prototype.create = function(likeParams){
     console.log(data.movie_id);
     counter++
     console.log(counter);
-    if (counter === 5){
+    if (counter > 2){
       generateChart();
     }
   });

@@ -22,7 +22,9 @@ class MoviesController < ApplicationController
     plots = all_plots.join(", ").to_s
     clean_plots = plots.gsub(" ","+").gsub("\"","")
 
+
     graph_data = HTTParty.get("http://uclassify.com/browse/prfekt/Values/ClassifyText?readkey=#{Rails.application.secrets.uclassify_api_key}&text=#{clean_plots}&version=1.01")
+
     chart_values = graph_data["uclassify"]["readCalls"]["classify"]["classification"]["class"]
 
     values = []
