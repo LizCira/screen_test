@@ -14,19 +14,19 @@ class MoviesController < ApplicationController
     movies_array = current_user.likes
     all_plots = []
     movies_array.each do |title|
-    movie = title["movie_id"]
-    plot = Movie.find_by_id(movie).plot
-    all_plots << plot
-  end
-  # puts all_plots
-  plots = all_plots.join(", ").to_s
-  clean_plots = plots.gsub(" ","+").gsub("\"","")
+      movie = title["movie_id"]
+      plot = Movie.find_by_id(movie).plot
+      all_plots << plot
+    end
 
-  graph_data = HTTParty.get("http://uclassify.com/browse/prfekt/Values/ClassifyText?readkey=#{Rails.application.secrets.uclassify_api_key}&text=#{clean_plots}&version=1.01")
+    plots = all_plots.join(", ").to_s
+    clean_plots = plots.gsub(" ","+").gsub("\"","")
 
-  render json: graph_data
+    graph_data = HTTParty.get("http://uclassify.com/browse/prfekt/Values/ClassifyText?readkey=#{Rails.application.secrets.uclassify_api_key}&text=#{clean_plots}&version=1.01")
+
+    render json: graph_data
  # graph_data["uclassify"]["readCalls"]["classify"]["classification"]["class"]
 # returns up to an array to loop through for attribtue values
 
-end
+  end
 end
