@@ -81,7 +81,7 @@ function likeCreate(cardId) {
     url: '/movies/'+ cardId + '/likes',
     type: 'POST',
     dataType: 'JSON',
-    data: {like: cardId},
+    // data: {like: cardId},
     beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))}
   }).done(function(data){
     console.log(data);
@@ -110,7 +110,8 @@ function setEventListeners(){
     displayAllMovies();
   });
 
-$('#film_feed').on('click', '.film_card', function(){console.log($(this).attr("id"));
+$('#film_feed').on('click', '.film_card', function(){
+  console.log($(this).attr("id"));
   var ID = $(this).attr("id")
 });
 
