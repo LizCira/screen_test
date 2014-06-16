@@ -74,6 +74,7 @@ LikesCollection.prototype.add = function(cardId){
   likesCollection.create(newLike);
 }
 
+var counter = 0
 LikesCollection.prototype.create = function(likeParams){
   $.ajax({
     url: '/movies/'+ likeParams.movie_id+ '/likes',
@@ -84,6 +85,11 @@ LikesCollection.prototype.create = function(likeParams){
   }).done(function(data){
     console.log(data);
     console.log(data.movie_id);
+    counter++
+    console.log(counter);
+    if (counter === 5){
+      generateChart();
+    }
   });
 }
 
@@ -129,10 +135,10 @@ function generateChart() {
 //     console.log(data);
 //     console.log(data.movie_id);
 //   });
-//   counter++
-//   console.log(counter);
-//   if (counter === 5){
-//     generateChart();
+  // counter++
+  // console.log(counter);
+  // if (counter === 5){
+  //   generateChart();
 //   }
 // }
 
