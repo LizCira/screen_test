@@ -24,6 +24,9 @@ class MoviesController < ApplicationController
 
   graph_data = HTTParty.get("http://uclassify.com/browse/prfekt/Values/ClassifyText?readkey=NhaVtD4ygw3GUA6OQdYXqo4YUQ&text=#{clean_plots}&version=1.01")
 
+  render json: graph_data
+ # graph_data["uclassify"]["readCalls"]["classify"]["classification"]["class"]
+# returns up to an array to loop through for attribtue values
 
 end
 end
