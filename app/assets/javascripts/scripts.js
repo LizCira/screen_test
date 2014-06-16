@@ -7,8 +7,6 @@ function Movie(movieJSON){
   this.plot = movieJSON.plot;
 }
 
-
-
 // ************ View *************
 function MovieView(model){
   this.model = model;
@@ -60,6 +58,36 @@ MoviesCollection.prototype.fetch = function(){
 
 
 // ******************LIKES MODEL******************
+function Like(likedMovieId) {
+  this.movie_id = likedMovieId;
+}
+
+
+// ******************LIKES Collection*************
+function LikesCollection(){
+  this.models = {};
+}
+
+LikesCollection.prototype.add = function(cardId){
+  var newLike = new Like(cardId);
+  // the cardId is the actual id and doesnt need to have movie_id called cause cardId is the actual ID being passed in from the drop event.
+  this.models[cardId] = newLike;
+  likesCollection.create(newLike);
+}
+
+LikesCollection.prototype.create = function(likeParams){
+  $.ajax({
+    url: '/movies/'+ likeParams.movie_id+ '/likes',
+    type: 'POST',
+    dataType: 'JSON',
+    data: {like: likeParams},
+    beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))}
+  }).done(function(data){
+    console.log(data);
+    console.log(data.movie_id);
+  });
+}
+
 
 
 
@@ -75,31 +103,33 @@ function displayAllMovies(){
 
 }
 // callback function for carddrop
-function likeCreate(cardId) {
-  console.log(cardId);
-  $.ajax({
-    url: '/movies/'+ cardId + '/likes',
-    type: 'POST',
-    dataType: 'JSON',
-    // data: {like: cardId},
-    beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))}
-  }).done(function(data){
-    console.log(data);
-    console.log(data.movie_id);
-  });
-}
+// function likeCreate(cardId) {
+//   console.log(cardId);
+//   $.ajax({
+//     url: '/movies/'+ cardId + '/likes',
+//     type: 'POST',
+//     dataType: 'JSON',
+//     // data: {like: cardId},
+//     beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))}
+//   }).done(function(data){
+//     console.log(data);
+//     console.log(data.movie_id);
+//   });
+// }
 
 // Ben's named function
 function handleCardDrop( event, ui ) {
   ui.draggable.draggable( 'option', 'revert', false );
   ui.draggable.hide();
   var likedCardId = ui.draggable.attr('id');
-  likeCreate(likedCardId);
+  likesCollection.add(likedCardId);
+  console.log(likedCardId);
 }
 
 
 // *************************************
 var moviesCollection = new MoviesCollection();
+var likesCollection = new LikesCollection();
 // *************************************
 
 
