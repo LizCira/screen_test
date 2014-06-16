@@ -17,11 +17,6 @@ MovieView.prototype.render = function(){
 // where the template will go?
   var newElement = $('<div class="film_card" id="' + this.model.id + '">').html(this.model.title);
   this.el = newElement;
-  $('.film_card').draggable({
-    stack: '#film_feed',
-    cursor: 'move',
-    revert: true
-  });
   return this;
 }
 
@@ -104,6 +99,11 @@ function displayAllMovies(){
     var movie = moviesCollection.models[id];
     var movieView = new MovieView(movie);
     $('#film_feed').append(movieView.render().el);
+    $('.film_card').draggable({
+      stack: '#film_feed',
+      cursor: 'move',
+      revert: true
+    });
   }
 
 }
