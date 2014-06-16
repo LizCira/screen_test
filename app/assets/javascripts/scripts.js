@@ -7,11 +7,13 @@ function Movie(movieJSON){
   this.plot = movieJSON.plot;
 }
 
+
 // ************ View *************
 function MovieView(model){
   this.model = model;
   this.el = undefined;
 }
+
 
 MovieView.prototype.render = function(){
 // where the template will go?
@@ -19,10 +21,6 @@ MovieView.prototype.render = function(){
   this.el = newElement;
   return this;
 }
-
-
-
-
 
 
 // ************ Collection *************
@@ -53,7 +51,11 @@ MoviesCollection.prototype.fetch = function(){
 
 // ******************LIKES MODEL******************
 function Like(likedMovieId) {
+  // added additional fields for the model to persist data
   this.movie_id = likedMovieId;
+  this.movie_title = moviesCollection.models[likedMovieId].title;
+  this.movie_poster = moviesCollection.models[likedMovieId].poster;
+  this.movie_year = moviesCollection.models[likedMovieId].year;
 }
 
 
@@ -67,12 +69,17 @@ LikesCollection.prototype.add = function(cardId){
   // the cardId is the actual id and doesnt need to have movie_id called cause cardId is the actual ID being passed in from the drop event.
   this.models[cardId] = newLike;
   likesCollection.create(newLike);
+  // this is where delete from moviesCollection should take place
+  delete moviesCollection.models[cardId];
 }
 
-var counter = 0
+// possibly change counter to if(Object.keys(likesCollection.models).length === 5)
+
 LikesCollection.prototype.create = function(likeParams){
+  // console.log(likeParams);
+  // likeParams has much more data but only data accepted through strong params is the ID
   $.ajax({
-    url: '/movies/'+ likeParams.movie_id+ '/likes',
+    url: '/movies/'+ likeParams.movie_id + '/likes',
     type: 'POST',
     dataType: 'JSON',
     data: {like: likeParams},
@@ -80,9 +87,8 @@ LikesCollection.prototype.create = function(likeParams){
   }).done(function(data){
     console.log(data);
     console.log(data.movie_id);
-    counter++
-    console.log(counter);
-    if (counter === 5){
+    // return data isn't being utilized but likesCollection length is used to trigger chart generation
+    if(Object.keys(likesCollection.models).length === 5){
       generateChart();
     }
   });
@@ -120,35 +126,25 @@ function generateChart() {
 }
 
 
-// callback function for carddrop
-// var counter = 0
-// function likeCreate(cardId) {
-//   console.log(cardId);
-//   // var cardIdJSON = {movie_id: cardId};
-//   $.ajax({
-//     url: '/movies/'+ cardId + '/likes',
-//     type: 'POST',
-//     dataType: 'JSON',
-//     // data: cardIdJSON,
-//     beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))}
-//   }).done(function(data){
-//     console.log(data);
-//     console.log(data.movie_id);
-//   });
-  // counter++
-  // console.log(counter);
-  // if (counter === 5){
-  //   generateChart();
-//   }
-// }
-
-// Ben's named function
+// Named functions for drag drops
 function handleCardDrop( event, ui ) {
   ui.draggable.draggable( 'option', 'revert', false );
   ui.draggable.hide();
   var likedCardId = ui.draggable.attr('id');
   likesCollection.add(likedCardId);
   console.log(likedCardId);
+}
+
+function handleCardDislike( event, ui ) {
+  ui.draggable.draggable( 'option', 'revert', false );
+  ui.draggable.hide();
+  var cardId = ui.draggable.attr("id")
+  // deletes trashed card from collections model
+  delete moviesCollection.models[cardId];
+  // if the length of the collection becomes equal to 5, it repopulates the feed...ask for advice on how to make this logic function better
+  if (Object.keys(moviesCollection.models).length === 5) {
+    moviesCollection.fetch();
+  }
 }
 
 
@@ -167,10 +163,10 @@ function setEventListeners(){
     displayAllMovies();
   });
 
-$('#film_feed').on('click', '.film_card', function(){
-  console.log($(this).attr("id"));
-  var ID = $(this).attr("id")
-});
+  $('#film_feed').on('click', '.film_card', function(){
+    console.log($(this).attr("id"));
+    var ID = $(this).attr("id")
+  });
 
   // executes when complete page is fully loaded, including all frames, objects and images
   // done this way because we want our posters to load AFTER the rest of the page has finished loading
@@ -180,8 +176,7 @@ $('#film_feed').on('click', '.film_card', function(){
 
   
 
-  // *********************BEN********************
-
+  // ********************* Drop Actions ********************
 
   $('#radar_chart').droppable({
     accept: '.film_card',
@@ -194,28 +189,13 @@ $('#film_feed').on('click', '.film_card', function(){
     accept: '.film_card',
     hoverClass: 'highlight',
     tolerance: 'pointer',
-    drop: function( event, ui ) {
-      ui.draggable.draggable( 'option', 'revert', false );
-      ui.draggable.hide();
-      var cardId = ui.draggable.attr("id")
-      // deletes trashed card from collections model
-      delete moviesCollection.models[cardId];
-      // if the length of the collection becomes equal to 5, it repopulates the feed...ask for advice on how to make this logic function better
-      if (Object.keys(moviesCollection.models).length === 5) {
-        moviesCollection.fetch();
-      }
-    }
-
+    drop: handleCardDislike
   });
-  // *********************************************
+
 }
 
 
-
-
-
-
-
+// ***************Document Ready****************
 $(function(){
 
   setEventListeners();
