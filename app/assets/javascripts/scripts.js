@@ -1,3 +1,24 @@
+// ******* Chart function *******
+var cdata = [65,59,90,81,56,55,40];
+
+function chartShell(){
+var radarChartData = {
+    labels : ["Absolutistic","Achievist","Exploitative","Instinctive","Relativistic","Systemic","Tribalistic"],
+     datasets : [
+      {
+        fillColor : "rgba(151,187,205,0.5)",
+        strokeColor : "rgba(151,187,205,1)",
+        pointColor : "rgba(151,187,205,1)",
+        pointStrokeColor : "#fff",
+        // data : chartDataArray
+        data : cdata
+          }
+        ]
+      }
+
+  var myRadar = new Chart(document.getElementById("canvas").getContext("2d")).Radar(radarChartData,{scaleShowLabels : false, pointLabelFontSize : 10});
+}
+
 // ************ Movie Model *************
 function Movie(movieJSON){
   this.id = movieJSON.id;
@@ -7,7 +28,7 @@ function Movie(movieJSON){
   this.plot = movieJSON.plot;
 }
 // *********** Chart Value Model *******
-function Chart(chartDataArray){
+function NewChart(chartDataArray){
   this.absolutistic = chartDataArray[0];
   this.achievist = chartDataArray[1];
   this.exploitive = chartDataArray[2];
@@ -16,6 +37,7 @@ function Chart(chartDataArray){
   this.systemic = chartDataArray[5];
   this.tribalistic = chartDataArray[6];
 }
+
 // ************ View *************
 function MovieView(model){
   this.model = model;
@@ -120,8 +142,12 @@ function generateChart() {
     dataType: "JSON",
   }).done(function(chartDataArray){
     console.log(chartDataArray);
-    var newChartValues = new Chart(chartDataArray);
-    console.log(newChartValues);
+    cdata = chartDataArray;
+    chartShell();
+    return cdata;
+    //making a model below, which may not be the best way now that I've seen the chart js code, so commented out....
+    // var newChartValues = new NewChart(chartDataArray);
+    // console.log(newChartValues);
   })
 }
 
@@ -224,6 +250,6 @@ $('#film_feed').on('click', '.film_card', function(){
 $(function(){
 
   setEventListeners();
-
+  chartShell();
 });
 
