@@ -140,11 +140,15 @@ $('#film_feed').on('click', '.film_card', function(){
     hoverClass: 'highlight',
     tolerance: 'pointer',
     drop: function( event, ui ) {
-    ui.draggable.draggable( 'option', 'revert', false );
-    ui.draggable.hide();
-    console.log(ui.draggable.attr("id"));
-    var cardId = ui.draggable.attr("id")
-    // blah(cardId);
+      ui.draggable.draggable( 'option', 'revert', false );
+      ui.draggable.hide();
+      var cardId = ui.draggable.attr("id")
+      // deletes trashed card from collections model
+      delete moviesCollection.models[cardId];
+      // if the length of the collection becomes equal to 5, it repopulates the feed...ask for advice on how to make this logic function better
+      if (Object.keys(moviesCollection.models).length === 5) {
+        moviesCollection.fetch();
+      }
     }
 
   });
