@@ -6,13 +6,12 @@ respond_to :json
 
     approved = Like.create({
       user_id: current_user.id,
-      # movie_id: like_attributes[:movie_id],
       movie_id: like_attributes[:movie_id],
       approve: true
     })
-    
+
     # respond_with approved
-    render json: approved 
+    render json: approved
   end
 
   private

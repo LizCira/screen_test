@@ -102,19 +102,39 @@ function displayAllMovies(){
   }
 
 }
+
+//function to get chart data
+function generateChart() {
+  $.ajax({
+    url: '/movies/new',
+    type: 'GET',
+    dataType: "JSON",
+  }).done(function(data){
+    console.log(data);
+  })
+}
+
+
 // callback function for carddrop
+// var counter = 0
 // function likeCreate(cardId) {
 //   console.log(cardId);
+//   // var cardIdJSON = {movie_id: cardId};
 //   $.ajax({
 //     url: '/movies/'+ cardId + '/likes',
 //     type: 'POST',
 //     dataType: 'JSON',
-//     // data: {like: cardId},
+//     // data: cardIdJSON,
 //     beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))}
 //   }).done(function(data){
 //     console.log(data);
 //     console.log(data.movie_id);
 //   });
+//   counter++
+//   console.log(counter);
+//   if (counter === 5){
+//     generateChart();
+//   }
 // }
 
 // Ben's named function
