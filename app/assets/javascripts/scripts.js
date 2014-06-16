@@ -22,7 +22,6 @@ MovieView.prototype.render = function(){
     cursor: 'move',
     revert: true
   });
-
   return this;
 }
 
@@ -152,6 +151,8 @@ var moviesCollection = new MoviesCollection();
 var likesCollection = new LikesCollection();
 // *************************************
 
+//RESOLVES FILM CARD ID ISSUE
+  $('#film_feed').on('click', '.film_card', function(){console.log($(this).attr("id"));});
 
 
 
@@ -171,9 +172,7 @@ $('#film_feed').on('click', '.film_card', function(){
     moviesCollection.fetch();
   });
 
-
-
-
+  
 
   // *********************BEN********************
 
@@ -216,5 +215,4 @@ $(function(){
   setEventListeners();
 
 });
-
 
