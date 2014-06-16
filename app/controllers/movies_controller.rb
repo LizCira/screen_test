@@ -20,9 +20,9 @@ class MoviesController < ApplicationController
   end
   # puts all_plots
   plots = all_plots.join(", ").to_s
-  clean_plots = plots.gsub(" ","+")
+  clean_plots = plots.gsub(" ","+").gsub("\"","")
 
-  graph_data = HTTParty.get("http://uclassify.com/browse/prfekt/Values/ClassifyText?readkey=NhaVtD4ygw3GUA6OQdYXqo4YUQ&text=#{clean_plots}&version=1.01")
+  graph_data = HTTParty.get("http://uclassify.com/browse/prfekt/Values/ClassifyText?readkey=#{Rails.application.secrets.uclassify_api_key}&text=#{clean_plots}&version=1.01")
 
   render json: graph_data
  # graph_data["uclassify"]["readCalls"]["classify"]["classification"]["class"]
