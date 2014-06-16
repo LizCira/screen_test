@@ -1,4 +1,4 @@
-// ************ Model *************
+// ************ Movie Model *************
 function Movie(movieJSON){
   this.id = movieJSON.id;
   this.title = movieJSON.title;
@@ -6,7 +6,16 @@ function Movie(movieJSON){
   this.year = movieJSON.year;
   this.plot = movieJSON.plot;
 }
-
+// *********** Chart Value Model *******
+function Chart(chartDataArray){
+  this.absolutistic = chartDataArray[0];
+  this.achievist = chartDataArray[1];
+  this.exploitive = chartDataArray[2];
+  this.instinctive = chartDataArray[3];
+  this.relativistic = chartDataArray[4];
+  this.systemic = chartDataArray[5];
+  this.tribalistic = chartDataArray[6];
+}
 // ************ View *************
 function MovieView(model){
   this.model = model;
@@ -19,11 +28,6 @@ MovieView.prototype.render = function(){
   this.el = newElement;
   return this;
 }
-
-
-
-
-
 
 // ************ Collection *************
 function MoviesCollection(){
@@ -114,11 +118,12 @@ function generateChart() {
     url: '/movies/new',
     type: 'GET',
     dataType: "JSON",
-  }).done(function(data){
-    console.log(data);
+  }).done(function(chartDataArray){
+    console.log(chartDataArray);
+    var newChartValues = new Chart(chartDataArray);
+    console.log(newChartValues);
   })
 }
-
 
 // callback function for carddrop
 // var counter = 0
