@@ -15,7 +15,6 @@ class MoviesController < ApplicationController
     all_plots = []
     movies_array.each do |title|
       movie = title["movie_id"]
-      binding.pry
       plot = Movie.find_by_id(movie).plot
       all_plots << plot
     end
