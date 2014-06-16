@@ -25,16 +25,19 @@ MovieView.prototype.render = function(){
 
 // ************ Collection *************
 function MoviesCollection(){
-  this.models = {};
+  this.models = [];
 }
 
 
 MoviesCollection.prototype.add = function(movieJSON){
-  var newMovie = new Movie(movieJSON);
-  this.models[movieJSON.id] = newMovie;
+  // push objects into an array here?
+  // for (id in movieJSON){
+    var newMovie = new Movie(movieJSON);
+    this.models.push(newMovie);
+    // console.log(moviesCollection.models);
+  // }
   $(this).trigger('refresh');
 }
-
 
 MoviesCollection.prototype.fetch = function(){
   $.ajax({
@@ -42,6 +45,7 @@ MoviesCollection.prototype.fetch = function(){
     type: 'GET',
     dataType: 'JSON'
   }).done(function(data){
+    console.log(data);
     for (id in data){
       moviesCollection.add(data[id]);
     }
@@ -69,7 +73,7 @@ LikesCollection.prototype.add = function(cardId){
   // the cardId is the actual id and doesnt need to have movie_id called cause cardId is the actual ID being passed in from the drop event.
   this.models[cardId] = newLike;
   likesCollection.create(newLike);
-  // this is where delete from moviesCollection should take place
+  // this is where delete from moviesCollection takes place
   delete moviesCollection.models[cardId];
 }
 
