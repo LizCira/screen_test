@@ -1,6 +1,10 @@
 // ******* Chart function *******
+//below cdata variable exists outside of scope.
+//it is referenced by calling chartShell in doc load
+//and it sets initial chart values to zero
 var cdata = [0,0,0,0,0,0,0];
 
+//loads the chart on doc load
 function chartShell(){
 var radarChartData = {
     labels : ["Absolutistic","Achievist","Exploitative","Instinctive","Relativistic","Systemic","Tribalistic"],
@@ -10,7 +14,6 @@ var radarChartData = {
         strokeColor : "rgba(151,187,205,1)",
         pointColor : "rgba(151,187,205,1)",
         pointStrokeColor : "#fff",
-        // data : chartDataArray
         data : cdata
           }
         ]
@@ -28,6 +31,8 @@ function Movie(movieJSON){
   this.plot = movieJSON.plot;
 }
 // *********** Chart Value Model *******
+//this is not currently used at all but saving it
+//just for now
 function NewChart(chartDataArray){
   this.absolutistic = chartDataArray[0];
   this.achievist = chartDataArray[1];
@@ -108,7 +113,7 @@ LikesCollection.prototype.create = function(likeParams){
     console.log(data.movie_id);
     counter++
     console.log(counter);
-    if (counter > 2){
+    if (counter > 5){
       generateChart();
     }
   });
@@ -145,9 +150,9 @@ function generateChart() {
     cdata = chartDataArray;
     chartShell();
     return cdata;
-    //making a model below, which may not be the best way now that I've seen the chart js code, so commented out....
-    // var newChartValues = new NewChart(chartDataArray);
-    // console.log(newChartValues);
+    //cdata is passed to the chart function
+    //the API response is parsed in movies controller
+    //and sent back formatted for use in json
   })
 }
 
@@ -238,14 +243,7 @@ $('#film_feed').on('click', '.film_card', function(){
     }
 
   });
-  // *********************************************
 }
-
-
-
-
-
-
 
 $(function(){
 
