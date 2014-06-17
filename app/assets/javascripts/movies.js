@@ -66,9 +66,9 @@ MoviesCollection.prototype.fetch = function(){
     dataType: 'JSON'
   }).done(function(data){
     console.log(data);
-    for (id in data){
-      moviesCollection.add(data[id]);
-    }
+    data.forEach(function(movieObject){
+      self.add(movieObject);
+    });
     $(self).trigger('fetch-done');
     // generates view here so that we don't create a view everytime we add(less 'refreshes')
   });
