@@ -43,7 +43,8 @@ function displayAllMovies(){
   for(id in moviesCollection.models){
     var movie = moviesCollection.models[id];
     var movieView = new MovieView(movie);
-    $('#film_feed').append(movieView.render().el);
+    // $('#film_feed').append(
+      movieView.render();
     $('.film_card').draggable({
       stack: '#film_feed',
       cursor: 'move',

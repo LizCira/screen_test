@@ -14,13 +14,17 @@ function MovieView(model){
   this.el = undefined;
 }
 
+MovieView.prototype.getTemplate = function(){
+    return _.template($('#filmTemplate').text(), this.model)
+  }
 
 MovieView.prototype.render = function(){
 // where the template will go?
-  var newElement = $('<div class="film_card" id="' + this.model.id + '">').html(this.model.title);
-  this.el = newElement;
-  return this;
+  this.el = $('#film_feed')
+  this.el.append(this.getTemplate());
+  // return this;
 }
+
 
 
 // ************ Collection *************
