@@ -7,17 +7,18 @@ var cdata = [0,0,0,0,0,0,0];
 //loads the chart on doc load
 function chartShell(){
 var radarChartData = {
-    labels : ["Absolutistic","Achievist","Exploitative","Instinctive","Relativistic","Systemic","Tribalistic"],
-     datasets : [
-      {
-        fillColor : "rgba(151,187,205,0.5)",
-        strokeColor : "rgba(151,187,205,1)",
-        pointColor : "rgba(151,187,205,1)",
-        pointStrokeColor : "#fff",
-        data : cdata
-          }
-        ]
-      }
+  labels : ["Absolutistic","Achievist","Exploitative","Instinctive","Relativistic","Systemic","Tribalistic"],
+   datasets : [
+    {
+      fillColor : "rgba(151,187,205,0.5)",
+      strokeColor : "rgba(151,187,205,1)",
+      pointColor : "rgba(151,187,205,1)",
+      pointStrokeColor : "#fff",
+      data : cdata
+    }
+  ]
+};      //trying to find where to add tooltips
+
 
   var myRadar = new Chart(document.getElementById("canvas").getContext("2d")).Radar(radarChartData,{scaleShowLabels : false, pointLabelFontSize : 10});
 }
@@ -40,7 +41,7 @@ function NewChart(chartDataArray){
 //function to get chart data
 function generateChart() {
   $.ajax({
-    url: '/movies/new',
+    url: '/movies/personality',
     type: 'GET',
     dataType: "JSON",
   }).done(function(chartDataArray){
@@ -116,6 +117,10 @@ function setEventListeners(){
   });
 }
 
+function showKeyDialog(name){
+
+}
+
 
 // ***************Document Ready****************
 
@@ -125,5 +130,12 @@ $(function(){
   chartShell();
 
   moviesCollectionView = new MoviesCollectionView(moviesCollection, $("#film_feed"));
+
+  $("canvas").on("click", function(){
+    $(".key_dialog").removeClass("hidden")
+               .on("click", function(){
+                 $(".key_dialog").addClass("hidden");
+    });
+  });
 });
 
