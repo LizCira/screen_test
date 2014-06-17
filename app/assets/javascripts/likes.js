@@ -38,7 +38,7 @@ LikesCollection.prototype.create = function(likeParams){
     console.log(data);
     console.log(data.movie_id);
     // return data isn't being utilized but likesCollection length is used to trigger chart generation
-    if(self.models.length === 5){
+    if(self.models.length > 4){
       generateChart();
       moviesCollection.fetch();
     }
