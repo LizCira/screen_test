@@ -1,3 +1,42 @@
+// ******* Chart function *******
+//below cdata variable exists outside of scope.
+//it is referenced by calling chartShell in doc load
+//and it sets initial chart values to zero
+var cdata = [0,0,0,0,0,0,0];
+
+//loads the chart on doc load
+function chartShell(){
+var radarChartData = {
+    labels : ["Absolutistic","Achievist","Exploitative","Instinctive","Relativistic","Systemic","Tribalistic"],
+     datasets : [
+      {
+        fillColor : "rgba(151,187,205,0.5)",
+        strokeColor : "rgba(151,187,205,1)",
+        pointColor : "rgba(151,187,205,1)",
+        pointStrokeColor : "#fff",
+        data : cdata
+          }
+        ]
+      }
+
+  var myRadar = new Chart(document.getElementById("canvas").getContext("2d")).Radar(radarChartData,{scaleShowLabels : false, pointLabelFontSize : 10});
+}
+
+
+// *********** Chart Value Model *******
+//this is not currently used at all but saving it
+//just for now
+function NewChart(chartDataArray){
+  this.absolutistic = chartDataArray[0];
+  this.achievist = chartDataArray[1];
+  this.exploitive = chartDataArray[2];
+  this.instinctive = chartDataArray[3];
+  this.relativistic = chartDataArray[4];
+  this.systemic = chartDataArray[5];
+  this.tribalistic = chartDataArray[6];
+}
+
+
 // named functions
 function displayAllMovies(){
   $('#film_feed').html('');
@@ -20,12 +59,17 @@ function generateChart() {
     url: '/movies/new',
     type: 'GET',
     dataType: "JSON",
-  }).done(function(data){
-    console.log(data);
+  }).done(function(chartDataArray){
+    console.log(chartDataArray);
+    cdata = chartDataArray;
+    chartShell();
+    return cdata;
+    //cdata is passed to the chart function
+    //the API response is parsed in movies controller
+    //and sent back formatted for use in json
   })
 }
 
-// Named functions for drag drops
 function handleCardDrop( event, ui ) {
   ui.draggable.draggable( 'option', 'revert', false );
   ui.draggable.hide();
@@ -47,10 +91,6 @@ function handleCardDislike( event, ui ) {
 var moviesCollection = new MoviesCollection();
 var likesCollection = new LikesCollection();
 // *************************************
-
-//RESOLVES FILM CARD ID ISSUE
-$('#film_feed').on('click', '.film_card', function(){console.log($(this).attr("id"));});
-
 
 
 function setEventListeners(){
@@ -84,14 +124,14 @@ function setEventListeners(){
     tolerance: 'pointer',
     drop: handleCardDislike
   });
-
 }
 
 
 // ***************Document Ready****************
+
 $(function(){
 
   setEventListeners();
-
+  chartShell();
 });
 
