@@ -83,7 +83,7 @@ function setEventListeners(){
   // done this way because we want our posters to load AFTER the rest of the page has finished loading
   $(window).load(function(){
     moviesCollection.fetch();
-    
+
   });
 
   // $(moviesCollection).on('refresh', function(){
