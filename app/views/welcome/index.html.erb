@@ -8,10 +8,19 @@
 
   <div id="film_feed">
 
-    <script id="filmTemplate" type="text/template">
-       <div class='film_card' id='<%%= id %>'>
+  </div>
+
+
+  <div id="radar_chart">
+    <canvas id="canvas" height="450" width="450"></canvas>
+  </div>
+
+</div>
+
+<script id="filmTemplate" type="text/template">
+      <div class='film_card' id='<%%= id %>'>
         <div class='film_poster'>
-          <img src='<%%= poster %>'>
+          <img src='<%%= poster %>' />
         </div>
 
         <div class='film_title'>
@@ -23,17 +32,3 @@
         </div>
       </div>
     </script>
-
-    <script type="text/template" id='testTemplate'>
-      <div><%%= scream %></div>
-    </script>
-
-  </div>
-
-
-  <div id="radar_chart">
-    <canvas id="canvas" height="450" width="450"></canvas>
-  </div>
-
-</div>
-

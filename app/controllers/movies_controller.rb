@@ -11,7 +11,7 @@ class MoviesController < ApplicationController
   end
 
   def new
-    movies_array = current_user.likes
+    movies_array = current_user.likes.last(5)
     all_plots = []
     movies_array.each do |title|
       movie = title["movie_id"]
