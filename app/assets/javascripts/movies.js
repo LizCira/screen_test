@@ -22,6 +22,7 @@ MovieView.prototype.render = function(){
   return this;
 }
 
+// *********** View for MoviesCollectionView *************
 function MoviesCollectionView(collection, el){ // right now: $('#film_feed')
   this.collection = collection;
   this.el = el;
