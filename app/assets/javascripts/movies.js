@@ -24,8 +24,9 @@ MovieView.prototype.render = function(){
   // this.el = newElement;
   // return this;
   var newTemplate = _.template($('#filmTemplate').text(), this.model);
+  console.log(this.model);
   this.el = $(newTemplate);
-
+  return this;
 }
 
 // *********** View for MoviesCollectionView *************
@@ -47,7 +48,9 @@ MoviesCollectionView.prototype.render = function(){
     movieView.el.draggable({
       stack: '#film_feed',
       cursor: 'move',
-      revert: true
+      revert: true,
+      start: function(event, ui) { $(this).css("z-index", 999)},
+      stop: function(event, ui) {$(this).css('z-index', '500')}
     });
   });
 }
