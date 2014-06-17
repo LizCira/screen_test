@@ -30,12 +30,9 @@ function MoviesCollection(){
 
 
 MoviesCollection.prototype.add = function(movieJSON){
-  // push objects into an array here?
-  // for (id in movieJSON){
-    var newMovie = new Movie(movieJSON);
-    this.models.push(newMovie);
-    // console.log(moviesCollection.models);
-  // }
+  var newMovie = new Movie(movieJSON);
+  this.models.push(newMovie);
+  // console.log(moviesCollection.models);
   $(this).trigger('refresh');
 }
 
@@ -52,34 +49,57 @@ MoviesCollection.prototype.fetch = function(){
   });
 }
 
+MoviesCollection.prototype.shiftAway = function(movieId){
+  var self = this;
+  var removed = [];
+  // console.log("outside": this)
+  this.models.forEach(function(object, i){
+  // console.log("inside": this)
+  // this WITHIN this callback does NOT persist...hence which is why we need to declare self = this
+  // we are interating over the array and each index has an object and i automatically becomes the object's index
+    if (object.id === movieId){
+      var popped = self.models.splice(i, 1);
+      removed.push(popped);
+    }
+
+  });
+  // if the length of the collection becomes equal to 5, it repopulates the feed...ask for advice on how to make this logic function better
+  if (this.models.length === 5) {
+    moviesCollection.fetch();
+  }
+  console.log(removed[0]);
+  return removed[0];
+}
+
 
 // ******************LIKES MODEL******************
-function Like(likedMovieId) {
+function Like(likedMovieObject) {
   // added additional fields for the model to persist data
-  this.movie_id = likedMovieId;
-  this.movie_title = moviesCollection.models[likedMovieId].title;
-  this.movie_poster = moviesCollection.models[likedMovieId].poster;
-  this.movie_year = moviesCollection.models[likedMovieId].year;
+  this.movie_id = likedMovieObject.id;
+  this.movie_title = likedMovieObject.title;
+  this.movie_poster = likedMovieObject.poster;
+  this.movie_year = likedMovieObject.year;
 }
 
 
 // ******************LIKES Collection*************
 function LikesCollection(){
-  this.models = {};
+  this.models = [];
 }
 
-LikesCollection.prototype.add = function(cardId){
-  var newLike = new Like(cardId);
-  // the cardId is the actual id and doesnt need to have movie_id called cause cardId is the actual ID being passed in from the drop event.
-  this.models[cardId] = newLike;
+LikesCollection.prototype.add = function(cardArray){
+  var newLike = new Like(cardArray[0]);
+  // the cardId is the "removed" movie object being popped by itself from splice method
+  this.models.push(newLike);
   likesCollection.create(newLike);
   // this is where delete from moviesCollection takes place
-  delete moviesCollection.models[cardId];
+  // delete moviesCollection.models[cardId];
 }
 
 // possibly change counter to if(Object.keys(likesCollection.models).length === 5)
 
 LikesCollection.prototype.create = function(likeParams){
+  var self = this;
   // console.log(likeParams);
   // likeParams has much more data but only data accepted through strong params is the ID
   $.ajax({
@@ -92,8 +112,9 @@ LikesCollection.prototype.create = function(likeParams){
     console.log(data);
     console.log(data.movie_id);
     // return data isn't being utilized but likesCollection length is used to trigger chart generation
-    if(Object.keys(likesCollection.models).length === 5){
+    if(self.models.length === 5){
       generateChart();
+      moviesCollection.fetch();
     }
   });
 }
@@ -129,26 +150,21 @@ function generateChart() {
   })
 }
 
-
 // Named functions for drag drops
 function handleCardDrop( event, ui ) {
   ui.draggable.draggable( 'option', 'revert', false );
   ui.draggable.hide();
-  var likedCardId = ui.draggable.attr('id');
-  likesCollection.add(likedCardId);
-  console.log(likedCardId);
+  var likedCardId = parseInt(ui.draggable.attr('id'), 10);
+  likesCollection.add(moviesCollection.shiftAway(likedCardId));
 }
 
 function handleCardDislike( event, ui ) {
   ui.draggable.draggable( 'option', 'revert', false );
   ui.draggable.hide();
-  var cardId = ui.draggable.attr("id")
+  var dislikedCardId = parseInt(ui.draggable.attr("id"), 10);
   // deletes trashed card from collections model
-  delete moviesCollection.models[cardId];
-  // if the length of the collection becomes equal to 5, it repopulates the feed...ask for advice on how to make this logic function better
-  if (Object.keys(moviesCollection.models).length === 5) {
-    moviesCollection.fetch();
-  }
+  console.log(dislikedCardId);
+  moviesCollection.shiftAway(dislikedCardId);
 }
 
 
@@ -158,7 +174,7 @@ var likesCollection = new LikesCollection();
 // *************************************
 
 //RESOLVES FILM CARD ID ISSUE
-  $('#film_feed').on('click', '.film_card', function(){console.log($(this).attr("id"));});
+$('#film_feed').on('click', '.film_card', function(){console.log($(this).attr("id"));});
 
 
 
