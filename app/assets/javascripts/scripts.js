@@ -13,15 +13,16 @@ function MovieView(model){
   this.el = undefined;
 }
 
+MovieView.prototype.getTemplate = function(){
+    return _.template($('#filmTemplate').text(), this.model)
+  }
+
+
 MovieView.prototype.render = function(){
 // where the template will go?
-  var newElement = $('<div class="film_card" id="' + this.model.id + '">').html(this.model.title);
-  this.el = newElement;
-  $('.film_card').draggable({
-    stack: '#film_feed',
-    cursor: 'move',
-    revert: true
-  });
+  // var newElement = $('<div class="film_card" id="' + this.model.id + '">').html(this.model.title);
+  this.el = $('#film_feed')
+  this.el.append(this.getTemplate());
   return this;
 }
 
@@ -49,9 +50,11 @@ MoviesCollection.prototype.fetch = function(){
     type: 'GET',
     dataType: 'JSON'
   }).done(function(data){
+    // console.log(data);
     for (id in data){
       moviesCollection.add(data[id]);
     }
+    // console.log(moviesCollection);
   });
 }
 
@@ -98,12 +101,23 @@ LikesCollection.prototype.create = function(likeParams){
 
 // named functions
 function displayAllMovies(){
-  $('#film_feed').html('');
+  // $('#film_feed').html('');
+
+  // moviesCollection.models.id.forEach(function(model){
+  //   var movie = moviesCollection.models[id];
+  //   var movieView = new MovieView(movie);
+  //   MovieView.render().el
+  //   })
 
   for(id in moviesCollection.models){
     var movie = moviesCollection.models[id];
     var movieView = new MovieView(movie);
     $('#film_feed').append(movieView.render().el);
+    $('.film_card').draggable({
+      stack: '#film_feed',
+      cursor: 'move',
+      revert: true
+    });
   }
 
 }
