@@ -1,3 +1,11 @@
+/* UTIL */
+
+.clear{
+  clear: both;
+}
+
+
+
 .content_main {
   width: 960px;
   margin: 0 auto;
@@ -23,8 +31,6 @@
   width: 500px;
   text-align: center;
   border: 1px solid #333;
-  /*overflow: hidden;*/
-  height:500px;
 }
 
 
@@ -33,10 +39,32 @@
 }
 
 .highlight {
-    border: 1px solid yellow;
-    background-color:yellow;
+  border: 1px solid yellow;
+  background-color:yellow;
+}
+
+.film_card {
+  border: 5px solid #999;
+  border-radius: 10px;
+  height: 110px;
+  background-color: #666;
+}
+
+.film_card img{
+  width: 70px;
+  height: 100px;
+  float: left;
+  margin-left: 50px;
+  margin-top: 5px;
+}
+
+.film_title{
+  font-size: 30px;
+  margin-top: 10px;
+  font-weight: bold;
+  color: white;
 }
 
 
-
+/*style="width: 50px; height: 100px;" */
 
