@@ -1,3 +1,12 @@
+**Screen Test**
+
+A student project app that analyzes your personality world view based your favorite movies!
+
+**"Wow that's intense, how do you do that?"**
+A user is presented with a range of movies drawn from the top 250 as voted on by IMDB's audience. As the user keeps or discards movies, the IMDB plot synopses of these films are sent to a text analysis classifier written by Mattias Ostmar that returns scores based on plot keywords. Because data visualization is fun, the cumulative scores of the user's selections are mapped in a radar graph. The user is allowed to continue selecting movies after the initial data is sent, and the graph continues to modify. 
+
+
+
 == README
 
 This README would normally document whatever steps are necessary to get the
