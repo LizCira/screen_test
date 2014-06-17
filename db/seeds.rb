@@ -4,7 +4,7 @@
 
 Movie.delete_all
 Like.delete_all
-User.delete_all
+# User.delete_all
 
 movies = ["12 Angry Men",
 "12 Years a Slave",

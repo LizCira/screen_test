@@ -37,22 +37,6 @@ function NewChart(chartDataArray){
 }
 
 
-// named functions
-function displayAllMovies(){
-
-  for(id in moviesCollection.models){
-    var movie = moviesCollection.models[id];
-    var movieView = new MovieView(movie);
-    // $('#film_feed').append(
-      movieView.render();
-    $('.film_card').draggable({
-      stack: '#film_feed',
-      cursor: 'move',
-      revert: true
-    });
-  }
-}
-
 //function to get chart data
 function generateChart() {
   $.ajax({
@@ -90,6 +74,7 @@ function handleCardDislike( event, ui ) {
 // *************************************
 var moviesCollection = new MoviesCollection();
 var likesCollection = new LikesCollection();
+var moviesCollectionView;
 // *************************************
 
 
@@ -98,10 +83,15 @@ function setEventListeners(){
   // done this way because we want our posters to load AFTER the rest of the page has finished loading
   $(window).load(function(){
     moviesCollection.fetch();
+    
   });
 
-  $(moviesCollection).on('refresh', function(){
-    displayAllMovies();
+  // $(moviesCollection).on('refresh', function(){
+  //   //no-op
+  // });
+
+  $(moviesCollection).on('fetch-done', function(){
+    moviesCollectionView.render();
   });
 
   $('#film_feed').on('click', '.film_card', function(){
@@ -133,5 +123,7 @@ $(function(){
 
   setEventListeners();
   chartShell();
+
+  moviesCollectionView = new MoviesCollectionView(moviesCollection, $("#film_feed"));
 });
 

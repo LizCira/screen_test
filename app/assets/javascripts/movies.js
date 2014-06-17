@@ -25,6 +25,26 @@ MovieView.prototype.render = function(){
   // return this;
 }
 
+function MoviesCollectionView(collection, el){ // right now: $('#film_feed')
+  this.collection = collection;
+  this.el = el;
+}
+
+MoviesCollectionView.prototype.render = function(){
+  var self = this;
+
+  this.el.html('');
+
+  this.collection.models.forEach(function(movie){
+    var movieView = new MovieView(movie);
+    self.el.append(movieView.render().el);
+    movieView.el.draggable({
+      stack: '#film_feed',
+      cursor: 'move',
+      revert: true
+    });
+  });
+}
 
 
 // ************ Collection *************
@@ -37,19 +57,24 @@ MoviesCollection.prototype.add = function(movieJSON){
   var newMovie = new Movie(movieJSON);
   this.models.push(newMovie);
   // console.log(moviesCollection.models);
-  $(this).trigger('refresh');
+  // $(this).trigger('refresh'); ...don't need to trigger refresh on add because it will refresh everytime something is added...
+  // only need to create the view after the entire fetch has been done, hence trigger('fetch-done') 
+  // after the .done function in MoviesCollection.prototype.fetch is done
 }
 
 MoviesCollection.prototype.fetch = function(){
+  var self = this;
   $.ajax({
     url: '/movies',
     type: 'GET',
     dataType: 'JSON'
   }).done(function(data){
     console.log(data);
-    for (id in data){
-      moviesCollection.add(data[id]);
-    }
+    data.forEach(function(movieObject){
+      self.add(movieObject);
+    });
+    $(self).trigger('fetch-done');
+    // generates view here so that we don't create a view everytime we add(less 'refreshes')
   });
 }
 
