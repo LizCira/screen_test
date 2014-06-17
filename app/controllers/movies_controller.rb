@@ -20,12 +20,19 @@ class MoviesController < ApplicationController
     end
 
     plots = all_plots.join(", ").to_s
-    clean_plots = plots.gsub(" ","+").gsub("\"","")
+    clean_plots = plots.gsub(" ","+").gsub("\"","").gsub("\(","").gsub("\)","").gsub(/[^\x00-\x7F]/n,'e').downcase.to_s
 
     graph_data = HTTParty.get("http://uclassify.com/browse/prfekt/Values/ClassifyText?readkey=#{Rails.application.secrets.uclassify_api_key}&text=#{clean_plots}&version=1.01")
 
-    render json: graph_data
- # graph_data["uclassify"]["readCalls"]["classify"]["classification"]["class"]
+    chart_values = graph_data["uclassify"]["readCalls"]["classify"]["classification"]["class"]
+
+    values = []
+    chart_values.each do |x|
+    values << x["p"]
+      end
+
+    render json: values
+ #
 # returns up to an array to loop through for attribtue values
 
   end
