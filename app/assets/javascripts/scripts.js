@@ -14,6 +14,7 @@ var radarChartData = {
       strokeColor : "rgba(151,187,205,1)",
       pointColor : "rgba(151,187,205,1)",
       pointStrokeColor : "#fff",
+      scaleFontFamily : "'Times'",
       data : cdata
     }
   ]
