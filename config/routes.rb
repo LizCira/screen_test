@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   devise_for :users
   resources :movies do
     resources :likes
+    collection do
+      get "personality"
+    end
   end
 
 end

@@ -1,10 +1,10 @@
-**Screen Test**
+##Screen Test
 
-A student project app that analyzes your personality world view based your favorite movies!
+A student project app that analyzes a user's personality world view based on their favorite movies!
 
 **"Wow that's intense, how do you do that?"**
 
-A user is presented with a range of movies drawn from the top 250 as voted on by IMDB's audience. As the user keeps or discards movies, the IMDB plot synopses of these films are sent to a text analysis classifier written by Mattias Ostmar that returns scores based on plot keywords. Because data visualization is fun, the cumulative scores of the user's selections are mapped in a radar graph. The user is allowed to continue selecting movies after the initial data is sent, and the graph continues to modify. 
+A user is presented with a range of movies drawn from the top 250 as voted on by IMDB's audience. As the user keeps or discards movies, the IMDB plot synopses of these films are sent to a text analysis classifier written by Mattias Ostmar that returns "world view" value scores based on plot keywords. Because data visualization is fun, the cumulative scores of the user's selections are mapped in a radar graph, showing which world view they ultimately favor. The user is allowed to continue selecting movies after the initial data is sent, and the graph continues to modify. 
 
 **Try Out Screen Test on Heroku!**
 
@@ -28,22 +28,24 @@ http://murmuring-brook-8348.herokuapp.com/
 
 Screen Test runs off of Brian Fritz's excellent **OMDBAPI**, which accesses IMDB's movie archive: 
 
-http://www.omdbapi.com/
+[http://www.omdbapi.com/](http://www.omdbapi.com/)
 
 We also rely on Mattias Ostmar's worldview text analysis classification set, made accessible via the **uClassify** API here: 
 
-http://www.uclassify.com/browse/prfekt/Values
+[http://www.uclassify.com/browse/prfekt/Values](http://www.uclassify.com/browse/prfekt/Values)
 
 **Javascript Libraries**
 
-A team goal was to gain experience with Javascript and to keep as much our code client side. To that end, we use:
+A core team goal was to gain experience with Javascript and to keep as much our code client side as possible. To that end, we use:
 
 	 Chart.js -- Radar Chart data visualization
-	 http://chartjs.org/
+	 	http://chartjs.org/
+	 	
 	 jQuery JavaScript Library v1.11.1
- 	 http://jquery.com/
- 	 jQuery UI - v1.10.4 - 2014-04-02 -- Drag and drop animation
-	 http://jqueryui.com
+ 	 	http://jquery.com/
+ 	 	
+ 	 jQuery UI - v1.10.4 -- Drag and drop animation
+	 	http://jqueryui.com
 
 **Database Creation and Initialzation**
 
@@ -59,9 +61,13 @@ WE NEED THE DIAGRAM!
 
 **About The Text Analytics**
 
-FINISHG THIS WHEN WE WRITE COPY FOR THE APP
+Our text analytics system was written by the media/ text sentiment specialist [Mattias Ostmar](http://mattiasostmar.wordpress.com/). If you like text analytics, definitely check out hsi blog, since he has a bunch of cool projects going on. 
+
+This system itself is based on Don Beck's Spiral Dynamics vMemes and John Marshall Roberts Worldviews, which the curious can read more about here: [http://en.wikipedia.org/wiki/Spiral_Dynamics#vMEMEs=](http://en.wikipedia.org/wiki/Spiral_Dynamics#vMEMEs=) 
 
 **About Us**
 
-We're all students at General Assembly's New York City April 2014 WDI program. More about us: 
+We're all students at General Assembly's New York City April 2014 WDI program. 
+
+More about us: 
 

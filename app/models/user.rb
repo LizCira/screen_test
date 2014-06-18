@@ -6,4 +6,11 @@ class User < ActiveRecord::Base
 
   has_many :movies, through: :likes
   has_many :likes
+
+  def recently_liked_movies_plots(number)
+    recent_likes = self.likes.last(number)
+    recent_likes.map do |like|
+      like.movie_plot
+    end
+  end
 end

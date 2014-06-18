@@ -7,17 +7,18 @@ var cdata = [0,0,0,0,0,0,0];
 //loads the chart on doc load
 function chartShell(){
 var radarChartData = {
-    labels : ["Absolutistic","Achievist","Exploitative","Instinctive","Relativistic","Systemic","Tribalistic"],
-     datasets : [
-      {
-        fillColor : "rgba(151,187,205,0.5)",
-        strokeColor : "rgba(151,187,205,1)",
-        pointColor : "rgba(151,187,205,1)",
-        pointStrokeColor : "#fff",
-        data : cdata
-          }
-        ]
-      }
+  labels : ["Absolutistic","Achievist","Exploitative","Instinctive","Relativistic","Systemic","Tribalistic"],
+   datasets : [
+    {
+      fillColor : "rgba(151,187,205,0.5)",
+      strokeColor : "rgba(151,187,205,1)",
+      pointColor : "rgba(151,187,205,1)",
+      pointStrokeColor : "#fff",
+      data : cdata
+    }
+  ]
+};
+
 
   var myRadar = new Chart(document.getElementById("canvas").getContext("2d")).Radar(radarChartData,{scaleShowLabels : false, pointLabelFontSize : 10});
 }
@@ -26,21 +27,21 @@ var radarChartData = {
 // *********** Chart Value Model *******
 //this is not currently used at all but saving it
 //just for now
-function NewChart(chartDataArray){
-  this.absolutistic = chartDataArray[0];
-  this.achievist = chartDataArray[1];
-  this.exploitive = chartDataArray[2];
-  this.instinctive = chartDataArray[3];
-  this.relativistic = chartDataArray[4];
-  this.systemic = chartDataArray[5];
-  this.tribalistic = chartDataArray[6];
-}
+// function NewChart(chartDataArray){
+//   this.absolutistic = chartDataArray[0];
+//   this.achievist = chartDataArray[1];
+//   this.exploitive = chartDataArray[2];
+//   this.instinctive = chartDataArray[3];
+//   this.relativistic = chartDataArray[4];
+//   this.systemic = chartDataArray[5];
+//   this.tribalistic = chartDataArray[6];
+// }
 
 
 //function to get chart data
 function generateChart() {
   $.ajax({
-    url: '/movies/new',
+    url: '/movies/personality',
     type: 'GET',
     dataType: "JSON",
   }).done(function(chartDataArray){
@@ -79,11 +80,11 @@ var moviesCollectionView;
 
 
 function setEventListeners(){
-  // executes when complete page is fully loaded, including all frames, objects and images
+  // (window).load executes when complete page is fully loaded, including all frames, objects and images
   // done this way because we want our posters to load AFTER the rest of the page has finished loading
   $(window).load(function(){
     moviesCollection.fetch();
-    
+
   });
 
   // $(moviesCollection).on('refresh', function(){
@@ -112,7 +113,6 @@ function setEventListeners(){
   });
 }
 
-
 // ***************Document Ready****************
 
 $(function(){
@@ -121,5 +121,12 @@ $(function(){
   chartShell();
 
   moviesCollectionView = new MoviesCollectionView(moviesCollection, $("#film_feed"));
+
+  $("canvas").on("click", function(){
+    $(".key_dialog").removeClass("hidden")
+               .on("click", function(){
+                 $(".key_dialog").addClass("hidden");
+    });
+  });
 });
 
