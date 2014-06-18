@@ -43,15 +43,15 @@
 
 .key_dialog {
   position: absolute;
-  width: 400px;
+  width: 500px;
   min-height: 200px;
   top: 30%;
   left: 50%;
-  margin-left: -200px;
+  margin-left: -360px;
   background-color: ivory;
   border: 2px solid green;
   border-radius: 20px;
-  font-size: 1.5em;
+  font-size: 1em;
   padding: 10px;
 }
 

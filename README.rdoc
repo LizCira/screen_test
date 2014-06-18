@@ -1,4 +1,4 @@
-**Screen Test**
+##Screen Test
 
 A student project app that analyzes a user's personality world view based on their favorite movies!
 
@@ -28,22 +28,24 @@ http://murmuring-brook-8348.herokuapp.com/
 
 Screen Test runs off of Brian Fritz's excellent **OMDBAPI**, which accesses IMDB's movie archive: 
 
-http://www.omdbapi.com/
+[http://www.omdbapi.com/](http://www.omdbapi.com/)
 
 We also rely on Mattias Ostmar's worldview text analysis classification set, made accessible via the **uClassify** API here: 
 
-http://www.uclassify.com/browse/prfekt/Values
+[http://www.uclassify.com/browse/prfekt/Values](http://www.uclassify.com/browse/prfekt/Values)
 
 **Javascript Libraries**
 
-A team goal was to gain experience with Javascript and to keep as much our code client side. To that end, we use:
+A core team goal was to gain experience with Javascript and to keep as much our code client side as possible. To that end, we use:
 
 	 Chart.js -- Radar Chart data visualization
-	 http://chartjs.org/
+	 	http://chartjs.org/
+	 	
 	 jQuery JavaScript Library v1.11.1
- 	 http://jquery.com/
+ 	 	http://jquery.com/
+ 	 	
  	 jQuery UI - v1.10.4 -- Drag and drop animation
-	 http://jqueryui.com
+	 	http://jqueryui.com
 
 **Database Creation and Initialzation**
 
@@ -59,7 +61,9 @@ WE NEED THE DIAGRAM!
 
 **About The Text Analytics**
 
-FINISHG THIS WHEN WE WRITE COPY FOR THE APP
+Our text analytics system was written by the media/ text sentiment specialist [Mattias Ostmar](http://mattiasostmar.wordpress.com/). If you like text analytics, definitely check out hsi blog, since he has a bunch of cool projects going on. 
+
+This system itself is based on Don Beck's Spiral Dynamics vMemes and John Marshall Roberts Worldviews, which the curious can read more about here: [http://en.wikipedia.org/wiki/Spiral_Dynamics#vMEMEs=](http://en.wikipedia.org/wiki/Spiral_Dynamics#vMEMEs=) 
 
 **About Us**
 

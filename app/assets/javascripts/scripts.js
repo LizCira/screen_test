@@ -17,7 +17,7 @@ var radarChartData = {
       data : cdata
     }
   ]
-};      //trying to find where to add tooltips
+};
 
 
   var myRadar = new Chart(document.getElementById("canvas").getContext("2d")).Radar(radarChartData,{scaleShowLabels : false, pointLabelFontSize : 10});
@@ -27,15 +27,15 @@ var radarChartData = {
 // *********** Chart Value Model *******
 //this is not currently used at all but saving it
 //just for now
-function NewChart(chartDataArray){
-  this.absolutistic = chartDataArray[0];
-  this.achievist = chartDataArray[1];
-  this.exploitive = chartDataArray[2];
-  this.instinctive = chartDataArray[3];
-  this.relativistic = chartDataArray[4];
-  this.systemic = chartDataArray[5];
-  this.tribalistic = chartDataArray[6];
-}
+// function NewChart(chartDataArray){
+//   this.absolutistic = chartDataArray[0];
+//   this.achievist = chartDataArray[1];
+//   this.exploitive = chartDataArray[2];
+//   this.instinctive = chartDataArray[3];
+//   this.relativistic = chartDataArray[4];
+//   this.systemic = chartDataArray[5];
+//   this.tribalistic = chartDataArray[6];
+// }
 
 
 //function to get chart data
@@ -80,7 +80,7 @@ var moviesCollectionView;
 
 
 function setEventListeners(){
-  // executes when complete page is fully loaded, including all frames, objects and images
+  // (window).load executes when complete page is fully loaded, including all frames, objects and images
   // done this way because we want our posters to load AFTER the rest of the page has finished loading
   $(window).load(function(){
     moviesCollection.fetch();
@@ -116,11 +116,6 @@ function setEventListeners(){
     drop: handleCardDislike
   });
 }
-
-function showKeyDialog(name){
-
-}
-
 
 // ***************Document Ready****************
 
