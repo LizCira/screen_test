@@ -38,9 +38,6 @@ MoviesCollectionView.prototype.render = function(){
 
   this.collection.models.forEach(function(movie){
     var movieView = new MovieView(movie);
-    // var i = self.collection.models.length;
-
-    // while (i < 10) {
     self.el.append(movieView.render().el);
     // console.log(movieView.el)
     // console.log(movieView)
@@ -49,7 +46,6 @@ MoviesCollectionView.prototype.render = function(){
       cursor: 'move',
       revert: true
     });
-  // }
   });
 }
 
@@ -75,11 +71,10 @@ MoviesCollection.prototype.fetch = function(){
     type: 'GET',
     dataType: 'JSON'
   }).done(function(data){
-    // debugger;
     console.log(data);
-    if (self.models.length === 5){
-      data = data.slice(0, 5);
-    }
+    // if (moviesCollection.models.length === 5){
+    //   data = data.slice(0, 5);
+    // }
     console.log(data);
     data.forEach(function(movieObject){
       self.add(movieObject);
@@ -87,6 +82,7 @@ MoviesCollection.prototype.fetch = function(){
     $(self).trigger('fetch-done');
     // generates view here so that we don't create a view everytime we add(less 'refreshes')
   });
+  console.log(moviesCollection.models.length)
 }
 
 MoviesCollection.prototype.shiftAway = function(movieId){
