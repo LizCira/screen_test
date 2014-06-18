@@ -17,11 +17,15 @@ function MovieView(model){
 
 MovieView.prototype.render = function(){
 // where the template will go?
-  var newElement = $('<div class="film_card" id="' + this.model.id + '">').html(this.model.title);
-  this.el = newElement;
+  // var newElement = $('<div class="film_card" id="' + this.model.id + '">').html(this.model.title);
+  // this.el = newElement;
+  // return this;
+  var newTemplate = _.template($('#filmTemplate').text(), this.model);
+  this.el = $(newTemplate);
   return this;
 }
 
+// *********** View for MoviesCollectionView *************
 function MoviesCollectionView(collection, el){ // right now: $('#film_feed')
   this.collection = collection;
   this.el = el;
@@ -35,6 +39,8 @@ MoviesCollectionView.prototype.render = function(){
   this.collection.models.forEach(function(movie){
     var movieView = new MovieView(movie);
     self.el.append(movieView.render().el);
+    console.log(movieView.el)
+    console.log(movieView)
     movieView.el.draggable({
       stack: '#film_feed',
       cursor: 'move',
