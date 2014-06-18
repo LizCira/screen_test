@@ -94,10 +94,6 @@ function setEventListeners(){
     moviesCollectionView.render();
   });
 
-  $('#film_feed').on('click', '.film_card', function(){
-    console.log($(this).attr("id"));
-    var ID = $(this).attr("id")
-  });
 
   // ********************* Drop Actions ********************
 

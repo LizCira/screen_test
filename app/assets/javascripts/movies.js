@@ -38,14 +38,18 @@ MoviesCollectionView.prototype.render = function(){
 
   this.collection.models.forEach(function(movie){
     var movieView = new MovieView(movie);
+    // var i = self.collection.models.length;
+
+    // while (i < 10) {
     self.el.append(movieView.render().el);
-    console.log(movieView.el)
-    console.log(movieView)
+    // console.log(movieView.el)
+    // console.log(movieView)
     movieView.el.draggable({
       stack: '#film_feed',
       cursor: 'move',
       revert: true
     });
+  // }
   });
 }
 
@@ -71,6 +75,11 @@ MoviesCollection.prototype.fetch = function(){
     type: 'GET',
     dataType: 'JSON'
   }).done(function(data){
+    // debugger;
+    console.log(data);
+    if (self.models.length === 5){
+      data = data.slice(0, 5);
+    }
     console.log(data);
     data.forEach(function(movieObject){
       self.add(movieObject);
@@ -98,6 +107,5 @@ MoviesCollection.prototype.shiftAway = function(movieId){
   if (this.models.length === 5) {
     moviesCollection.fetch();
   }
-  console.log(removed[0]);
   return removed[0];
 }

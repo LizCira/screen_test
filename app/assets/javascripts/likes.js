@@ -5,6 +5,7 @@ function Like(likedMovieObject) {
   this.movie_title = likedMovieObject.title;
   this.movie_poster = likedMovieObject.poster;
   this.movie_year = likedMovieObject.year;
+  // this.movie_approve = true;
 }
 
 

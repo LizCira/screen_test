@@ -28,12 +28,11 @@ class MoviesController < ApplicationController
 
     values = []
     chart_values.each do |x|
-    values << x["p"]
-      end
+      values << x["p"]
+    end
 
     render json: values
- #
-# returns up to an array to loop through for attribtue values
+  # returns up to an array to loop through for attribtue values
 
   end
 end
