@@ -76,6 +76,7 @@ function handleCardDislike( event, ui ) {
 var moviesCollection = new MoviesCollection();
 var likesCollection = new LikesCollection();
 var moviesCollectionView;
+var likesCollectionView;
 // *************************************
 
 
@@ -94,6 +95,11 @@ function setEventListeners(){
   $(moviesCollection).on('fetch-done', function(){
     moviesCollectionView.render();
   });
+
+  $(likesCollection).on('fetch-likes', function(){
+    likesCollectionView.render();
+  });
+
 
 
   // ********************* Drop Actions ********************
@@ -121,6 +127,7 @@ $(function(){
   chartShell();
 
   moviesCollectionView = new MoviesCollectionView(moviesCollection, $("#film_feed"));
+  likesCollectionView = new LikesCollectionView(likesCollection, $("#like_tracker"));
 
   $("canvas").on("click", function(){
     $(".key_dialog").removeClass("hidden")

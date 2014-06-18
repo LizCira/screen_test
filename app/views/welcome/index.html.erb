@@ -20,6 +20,9 @@
       <canvas id="canvas" height="450" width="450"></canvas>
     </div>
 
+    <div id="like_tracker">
+
+    </div>
   </div>
 
   <div class="key_dialog hidden">
@@ -56,6 +59,23 @@
       </div>
     </div>
   </script>
+
+  <script id="likeTemplate" type="text/template">
+    <div class='liked_card' id='<%%= movie_id %>'>
+      <div class='liked_poster'>
+        <img src='<%%= movie_poster %>' />
+      </div>
+
+      <div class='liked_title'>
+        <%%= movie_title %>
+      </div>
+
+      <div class='liked_year'>
+        <%%= movie_year %>
+      </div>
+    </div>
+  </script>
+
 <% else %>
   Must be Signed in
 <% end %>

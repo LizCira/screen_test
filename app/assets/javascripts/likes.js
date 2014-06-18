@@ -9,6 +9,42 @@ function Like(likedMovieObject) {
 }
 
 
+// *******************LIKES VIEW******************
+function LikeView(model){
+  this.model = model;
+  this.el = undefined; 
+}
+
+
+LikeView.prototype.render = function(){
+  var likeTemplate = _.template($('#likeTemplate').text(), this.model);
+  this.el = $(likeTemplate);
+  return this;
+}
+
+
+// **********View for LikesCollectionView *********
+function LikesCollectionView(collection, el){
+  this.collection = collection;
+  this.el = el;
+}
+
+LikesCollectionView.prototype.render = function(){
+  var self = this;
+
+  this.el.html('');
+  if (likesCollection.models.length > 5){
+    likesCollection.replace();
+  }
+
+  this.collection.models.forEach(function(likedMovie){
+    var likeView = new LikeView(likedMovie);
+    self.el.append(likeView.render().el);
+  });
+
+}
+
+
 // ******************LIKES Collection*************
 function LikesCollection(){
   this.models = [];
@@ -18,12 +54,11 @@ LikesCollection.prototype.add = function(cardArray){
   var newLike = new Like(cardArray[0]);
   // the cardId is the "removed" movie object being popped by itself from splice method
   this.models.push(newLike);
-  likesCollection.create(newLike);
-  // this is where delete from moviesCollection takes place
-  // delete moviesCollection.models[cardId];
-}
+  this.create(newLike);
 
-// possibly change counter to if(Object.keys(likesCollection.models).length === 5)
+  $(this).trigger('fetch-likes');
+
+}
 
 LikesCollection.prototype.create = function(likeParams){
   var self = this;
@@ -36,14 +71,18 @@ LikesCollection.prototype.create = function(likeParams){
     data: {like: likeParams},
     beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))}
   }).done(function(data){
-    console.log(data);
-    console.log(data.movie_id);
     // return data isn't being utilized but likesCollection length is used to trigger chart generation
     if(self.models.length > 4){
       generateChart();
-      if (moviesCollection.models.length === 5) {
-        moviesCollection.refill();
-      }
     }
   });
 }
+
+LikesCollection.prototype.replace = function(){
+  this.models.splice(0, 1);
+}
+
+
+
+
+
