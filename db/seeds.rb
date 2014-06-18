@@ -252,7 +252,7 @@ movies.each do |title|
   clean_title = title.gsub(" ","%20")
   movie_hash = JSON.parse(HTTParty.get("http://www.omdbapi.com/?t=#{clean_title}&plot=full"))
   tomatoes_title = title.gsub(" ", "+")
-  tomatoes_hash = JSON.parse(HTTParty.get("http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey=s9t9wz49qmak8xeqxntf64vt&q=#{tomatoes_title}&page_limit=1"))
+  tomatoes_hash = JSON.parse(HTTParty.get("http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey=#{Rails.application.secrets.rotten_tomatoes_api_key}&q=#{tomatoes_title}&page_limit=1"))
 
   Movie.create({
     title: movie_hash["Title"],
