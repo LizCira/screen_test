@@ -124,8 +124,8 @@ $(function(){
 
   $("canvas").on("click", function(){
     $(".key_dialog").removeClass("hidden")
-               .on("click", function(){
-                 $(".key_dialog").addClass("hidden");
+              .on("click", function(){
+                $(".key_dialog").addClass("hidden");
     });
   });
 });

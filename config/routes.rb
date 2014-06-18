@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :likes
     collection do
       get "personality"
+      get "refill_list"
     end
   end
 
