@@ -43,13 +43,13 @@ MoviesCollectionView.prototype.render = function(){
   this.collection.models.forEach(function(movie){
     var movieView = new MovieView(movie);
     self.el.append(movieView.render().el);
-    // console.log(movieView.el)
-    // console.log(movieView)
+    console.log(movieView.el)
+    console.log(movieView)
     movieView.el.draggable({
       stack: '#film_feed',
       cursor: 'move',
       revert: true,
-      start: function(event, ui) { $(this).css("z-index", 999)},
+      start: function(event, ui) {$(this).css("z-index", 999)},
       stop: function(event, ui) {$(this).css('z-index', '500')}
     });
   });
@@ -78,13 +78,13 @@ MoviesCollection.prototype.fetch = function(){
     type: 'GET',
     dataType: 'JSON'
   }).done(function(data){
+    console.log(data);
     data.forEach(function(movieObject){
       self.add(movieObject);
     });
     $(self).trigger('fetch-done');
     // generates view here so that we don't create a view everytime we add(less 'refreshes')
   });
-  console.log(moviesCollection.models.length)
 }
 
 MoviesCollection.prototype.shiftAway = function(movieId){
@@ -103,27 +103,8 @@ MoviesCollection.prototype.shiftAway = function(movieId){
   });
   // if the length of the collection becomes equal to 5, it repopulates the feed...ask for advice on how to make this logic function better
   if (this.models.length === 5) {
-    moviesCollection.refill();
+    moviesCollection.fetch();
   }
+  console.log(removed[0]);
   return removed[0];
 }
-
-MoviesCollection.prototype.refill = function(){
-  var self = this;
-  $.ajax({
-    url: '/movies/refill_list',
-    type: 'GET',
-    dataType: 'JSON'
-  }).done(function(data){
-    data.forEach(function(movieObject){
-      self.add(movieObject);
-    });
-    $(self).trigger('fetch-done');
-    // generates view here so that we don't create a view everytime we add(less 'refreshes')
-  });
-  console.log(moviesCollection.models.length)
-}
-
-
-
-
