@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   devise_for :users
   resources :movies do
     resources :likes
+    collection do
+      get "personality"
+      get "refill_list"
+    end
   end
 
 end

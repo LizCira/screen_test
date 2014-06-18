@@ -10,30 +10,17 @@ class MoviesController < ApplicationController
     respond_with movies
   end
 
-  def new
-    movies_array = current_user.likes.last(5)
-    all_plots = []
-    movies_array.each do |title|
-      movie = title["movie_id"]
-      plot = Movie.find_by_id(movie).plot
-      all_plots << plot
-    end
-
-    plots = all_plots.join(", ").to_s
-    clean_plots = plots.gsub(" ","+").gsub("\"","").gsub("\(","").gsub("\)","").gsub(/[^\x00-\x7F]/n,'e').downcase.to_s
-
-    graph_data = HTTParty.get("http://uclassify.com/browse/prfekt/Values/ClassifyText?readkey=#{Rails.application.secrets.uclassify_api_key}&text=#{clean_plots}&version=1.01")
-
-    chart_values = graph_data["uclassify"]["readCalls"]["classify"]["classification"]["class"]
-
-    values = []
-    chart_values.each do |x|
-    values << x["p"]
-      end
-
-    render json: values
- #
-# returns up to an array to loop through for attribtue values
-
+  def personality
+    recently_liked_plots = current_user.recently_liked_movies_plots(5)
+    personality_scores = GraphDataHelper::get_personality_data(recently_liked_plots)
+    render json: personality_scores
   end
+
+  def refill_list
+    movies = Movie.all.sample(5)
+
+    respond_with movies
+  end
+
 end
+
