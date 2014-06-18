@@ -71,11 +71,6 @@ MoviesCollection.prototype.fetch = function(){
     type: 'GET',
     dataType: 'JSON'
   }).done(function(data){
-    console.log(data);
-    // if (moviesCollection.models.length === 5){
-    //   data = data.slice(0, 5);
-    // }
-    console.log(data);
     data.forEach(function(movieObject){
       self.add(movieObject);
     });
@@ -101,7 +96,27 @@ MoviesCollection.prototype.shiftAway = function(movieId){
   });
   // if the length of the collection becomes equal to 5, it repopulates the feed...ask for advice on how to make this logic function better
   if (this.models.length === 5) {
-    moviesCollection.fetch();
+    moviesCollection.refill();
   }
   return removed[0];
 }
+
+MoviesCollection.prototype.refill = function(){
+  var self = this;
+  $.ajax({
+    url: '/movies/refill_list',
+    type: 'GET',
+    dataType: 'JSON'
+  }).done(function(data){
+    data.forEach(function(movieObject){
+      self.add(movieObject);
+    });
+    $(self).trigger('fetch-done');
+    // generates view here so that we don't create a view everytime we add(less 'refreshes')
+  });
+  console.log(moviesCollection.models.length)
+}
+
+
+
+

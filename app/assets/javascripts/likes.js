@@ -42,7 +42,7 @@ LikesCollection.prototype.create = function(likeParams){
     if(self.models.length > 4){
       generateChart();
       if (moviesCollection.models.length === 5) {
-        moviesCollection.fetch();
+        moviesCollection.refill();
       }
     }
   });
