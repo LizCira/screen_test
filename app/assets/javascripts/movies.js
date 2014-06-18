@@ -43,8 +43,8 @@ MoviesCollectionView.prototype.render = function(){
       stack: '#film_feed',
       cursor: 'move',
       revert: true,
-      start: function(event, ui) {$(this).css("z-index", 999)},
-      stop: function(event, ui) {$(this).css('z-index', '500')}
+      start: function(event, ui) {$(this).css("z-index", 500)},
+      stop: function(event, ui) {$(this).css('z-index', 0)}
     });
   });
 }
