@@ -43,14 +43,12 @@ MoviesCollectionView.prototype.render = function(){
   this.collection.models.forEach(function(movie){
     var movieView = new MovieView(movie);
     self.el.append(movieView.render().el);
-    console.log(movieView.el)
-    console.log(movieView)
     movieView.el.draggable({
       stack: '#film_feed',
       cursor: 'move',
       revert: true,
-      start: function(event, ui) {$(this).css("z-index", 999)},
-      stop: function(event, ui) {$(this).css('z-index', '500')}
+      start: function(event, ui) {$(this).css("z-index", 500)},
+      stop: function(event, ui) {$(this).css('z-index', 0)}
     });
   });
 }

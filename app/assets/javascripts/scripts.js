@@ -10,7 +10,7 @@ var radarChartData = {
   labels : ["Absolutistic","Achievist","Exploitative","Instinctive","Relativistic","Systemic","Tribalistic"],
    datasets : [
     {
-      fillColor : "rgba(151,187,205,0.5)",
+      fillColor : "rgba(0,191,255,0.5)",
       strokeColor : "rgba(151,187,205,1)",
       pointColor : "rgba(151,187,205,1)",
       pointStrokeColor : "#fff",
@@ -20,7 +20,13 @@ var radarChartData = {
 };
 
 
-  var myRadar = new Chart(document.getElementById("canvas").getContext("2d")).Radar(radarChartData,{scaleShowLabels : false, pointLabelFontSize : 10});
+  var myRadar = new Chart(document.getElementById("canvas").getContext("2d")).Radar
+  (radarChartData,{scaleShowLabels : false,
+                   pointLabelFontSize : 12,
+                   pointLabelFontFamily : "'Helvetica'",
+                   pointLabelFontStyle : "bold",
+                   showTooltips : true
+                 });
 }
 
 
@@ -76,6 +82,7 @@ function handleCardDislike( event, ui ) {
 var moviesCollection = new MoviesCollection();
 var likesCollection = new LikesCollection();
 var moviesCollectionView;
+var likesCollectionView;
 // *************************************
 
 
@@ -94,6 +101,11 @@ function setEventListeners(){
   $(moviesCollection).on('fetch-done', function(){
     moviesCollectionView.render();
   });
+
+  $(likesCollection).on('fetch-likes', function(){
+    likesCollectionView.render();
+  });
+
 
 
   // ********************* Drop Actions ********************
@@ -122,6 +134,7 @@ $(function(){
   chartShell();
 
   moviesCollectionView = new MoviesCollectionView(moviesCollection, $("#film_feed"));
+  likesCollectionView = new LikesCollectionView(likesCollection, $("#like_tracker"));
 
   $("canvas").on("click", function(){
     $(".key_dialog").removeClass("hidden")

@@ -4,7 +4,7 @@
 
 Movie.delete_all
 Like.delete_all
-# User.delete_all
+User.delete_all
 
 movies = ["12 Angry Men",
 "12 Years a Slave",
@@ -251,11 +251,14 @@ movies = ["12 Angry Men",
 movies.each do |title|
   clean_title = title.gsub(" ","%20")
   movie_hash = JSON.parse(HTTParty.get("http://www.omdbapi.com/?t=#{clean_title}&plot=full"))
+  tomatoes_title = title.gsub(" ", "+")
+  tomatoes_hash = JSON.parse(HTTParty.get("http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey=#{Rails.application.secrets.rotten_tomatoes_api_key}&q=#{tomatoes_title}&page_limit=1"))
+
   Movie.create({
     title: movie_hash["Title"],
-    poster: movie_hash["Poster"],
+    poster: tomatoes_hash["movies"][0]["posters"]["profile"],
     year: movie_hash["Year"],
     plot: movie_hash["Plot"]
     })
+  sleep(0.7)
 end
-
