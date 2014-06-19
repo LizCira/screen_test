@@ -28,6 +28,7 @@
 #trash_bin {
   /*float: left;*/
   /*width: 350px;*/
+  text-align: center;
   height: 110px;
   border: 1px solid #333;
 }
@@ -83,7 +84,6 @@
   float: left;
   width: 244px;
   min-height: 100px;
-  border: 1px solid black;
 }
 
 
@@ -117,13 +117,14 @@
   position: absolute;
   width: 500px;
   min-height: 200px;
-  top: 30%;
+  top: 6%;
   left: 50%;
   margin-left: -360px;
-  background-color: ivory;
+  background-color: rgba(255, 255, 240, 0.8);
   border: 2px solid red;
   border-radius: 20px;
   font-size: 1em;
+  font-style: bold;
   padding: 10px;
 }
 
@@ -134,6 +135,11 @@
 h1 {
   font-family: 'PT Sans Narrow', sans-serif;
   color: red;
+  margin-bottom: 2px;
+}
+
+h3 {
+  margin-top: 2px;
 }
 
 body {
@@ -143,7 +149,7 @@ body {
 
 header {
   background-color: #e8e8e8;
-  height: 100px;
+  height: 125px;
   width:100%;
   font-size: 30px;
   border: 2px black;
@@ -151,12 +157,19 @@ header {
 }
 
 canvas {
-  margin-top: -40px;
+  margin-top: -100px;
 }
 
-.instruction{
+.instruction p{
   line-height: .5em;
-  font-color: gray;
+  color: rgba(204,0,0,1);
+  font-size: 18px;
+}
+
+.like_text p{
+  font-size: 35px;
+  text-align: center;
+  color: rgba(204,0,0,1);
 }
 
 /*social icon styles*/
@@ -164,6 +177,21 @@ span {
   float: right;
   margin: 0 2px;
 }
+
 .tumblr{
   margin-right: 100px;
+}
+
+#sign_in {
+  text-align: center;
+}
+
+#sign_up {
+  text-align: center;
+}
+
+.tlt {
+  margin: 0 auto;
+  /*text-align: center;*/
+  font-size: 100px;
 }
