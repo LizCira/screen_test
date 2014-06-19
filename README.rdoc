@@ -46,6 +46,9 @@ A core team goal was to gain experience with Javascript and to keep as much our 
  	 	
  	 jQuery UI - v1.10.4 -- Drag and drop animation
 	 	http://jqueryui.com
+	 	
+	Underscore.js 1.6.0 -- Underscore for templating movie cards
+	    http://underscorejs.org
 
 **Database Creation and Initialzation**
 
@@ -69,5 +72,14 @@ This system itself is based on Don Beck's Spiral Dynamics vMemes and John Marsha
 
 We're all students at General Assembly's New York City April 2014 WDI program. 
 
-More about us: 
+Specifications for this project can be found here: [https://github.com/ga-students/WDI_NYC_Apr14_String/blob/master/w09/second_project.md](https://github.com/ga-students/WDI_NYC_Apr14_String/blob/master/w09/second_project.md)
 
+**More about us:** 
+
+Joe Park
+
+Liz Goldstein
+
+Ben Ticsay
+
+Zack Levine
