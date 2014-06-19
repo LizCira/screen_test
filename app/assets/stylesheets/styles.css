@@ -121,7 +121,7 @@
   left: 50%;
   margin-left: -360px;
   background-color: ivory;
-  border: 2px solid green;
+  border: 2px solid red;
   border-radius: 20px;
   font-size: 1em;
   padding: 10px;
@@ -154,5 +154,9 @@ canvas {
   margin-top: -40px;
 }
 
+p{
+  line-height: .5em;
+  font-color: gray;
+}
 /*style="width: 50px; height: 100px;" */
 
