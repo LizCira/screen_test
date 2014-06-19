@@ -20,6 +20,7 @@
   width: 550px;
   height: 550px;
   border: 1px solid #333;
+  text-align: center;
 
 }
 
@@ -122,7 +123,7 @@ h1 {
 
 body {
  font-family: 'PT Sans Narrow', sans-serif;
- background-color: #c5c5c5; 
+ background-color: #c5c5c5;
 }
 
 header {
