@@ -85,6 +85,8 @@ Specifications for this project can be found here: [https://github.com/ga-studen
 
 **More about us:** 
 
+Our AGILE planning board has been made public, and can be found here: [https://trello.com/b/p4uhXOej/ga-wdi-project-2](https://trello.com/b/p4uhXOej/ga-wdi-project-2)
+
 Joe Park
 
 Liz Goldstein
