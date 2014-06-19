@@ -4,31 +4,35 @@
   clear: both;
 }
 
-
+.col_left{
+  float:left;
+  display: inline-block;
+}
 
 .content_main {
-  width: 960px;
+  width: 1200px;
   margin: 0 auto;
 }
 
 
 #radar_chart {
   float: left;
-  width: 300px;
-  height: 300px;
+  width: 550px;
+  height: 550px;
   border: 1px solid #333;
+
 }
 
 #trash_bin {
-  float: left;
-  width: 150px;
-  height: 300px;
+  /*float: left;*/
+  width: 400px;
+  height: 110px;
   border: 1px solid #333;
 }
 
 #film_feed {
-  float: left;
-  width: 500px;
+/*  float: left;*/
+  width: 400px;
   text-align: center;
   border: 1px solid #333;
 }
@@ -58,12 +62,12 @@
   width: 70px;
   height: 100px;
   float: left;
-  margin-left: 50px;
+  margin-left: 11px;
   margin-top: 5px;
 }
 
 .film_title{
-  font-size: 30px;
+  font-size: 20px;
   margin-top: 10px;
   font-weight: bold;
   color: white;
@@ -71,7 +75,7 @@
 
 #like_tracker{
   float: left;
-  width: 300px;
+  width: 244px;
   min-height: 100px;
   border: 1px solid black;
 }
@@ -110,6 +114,10 @@
 
 .key_dialog:hover {
   cursor: pointer;
+}
+
+canvas {
+  margin-top: -40px;
 }
 
 /*style="width: 50px; height: 100px;" */
