@@ -117,7 +117,7 @@
   position: absolute;
   width: 500px;
   min-height: 200px;
-  top: 6%;
+  top: 60%;
   left: 50%;
   margin-left: -360px;
   background-color: rgba(255, 255, 240, 0.8);
@@ -168,6 +168,12 @@ canvas {
 
 .like_text p{
   font-size: 35px;
+  text-align: center;
+  color: rgba(204,0,0,1);
+}
+
+.parenthesis p{
+  font-size: 18px;
   text-align: center;
   color: rgba(204,0,0,1);
 }
