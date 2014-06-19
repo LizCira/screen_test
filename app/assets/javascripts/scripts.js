@@ -22,7 +22,7 @@ var radarChartData = {
 
   var myRadar = new Chart(document.getElementById("canvas").getContext("2d")).Radar
   (radarChartData,{scaleShowLabels : false,
-                   pointLabelFontSize : 12,
+                   pointLabelFontSize : 18,
                    pointLabelFontFamily : "'Helvetica'",
                    pointLabelFontStyle : "bold",
                    showTooltips : true
