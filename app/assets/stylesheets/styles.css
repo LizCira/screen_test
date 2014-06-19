@@ -134,6 +134,11 @@
 h1 {
   font-family: 'PT Sans Narrow', sans-serif;
   color: red;
+  margin-bottom: 2px;
+}
+
+h3 {
+  margin-top: 2px;
 }
 
 body {
@@ -143,7 +148,7 @@ body {
 
 header {
   background-color: #e8e8e8;
-  height: 100px;
+  height: 125px;
   width:100%;
   font-size: 30px;
   border: 2px black;
@@ -160,3 +165,17 @@ canvas {
 }
 /*style="width: 50px; height: 100px;" */
 
+#sign_in {
+  text-align: center;
+}
+
+#sign_up {
+  text-align: center;
+}
+
+
+.tlt {
+  margin: 0 auto;
+  /*text-align: center;*/
+  font-size: 100px;
+}
