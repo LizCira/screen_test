@@ -10,9 +10,9 @@ var radarChartData = {
   labels : ["Absolutistic","Achievist","Exploitative","Instinctive","Relativistic","Systemic","Tribalistic"],
    datasets : [
     {
-      fillColor : "rgba(0,191,255,0.5)",
-      strokeColor : "rgba(151,187,205,1)",
-      pointColor : "rgba(151,187,205,1)",
+      fillColor : "rgba(255,0,0,0.5)",
+      strokeColor : "rgba(204,0,0,1)",
+      pointColor : "rgba(96,96,96,1)",
       pointStrokeColor : "#fff",
       data : cdata
     }
@@ -22,7 +22,7 @@ var radarChartData = {
 
   var myRadar = new Chart(document.getElementById("canvas").getContext("2d")).Radar
   (radarChartData,{scaleShowLabels : false,
-                   pointLabelFontSize : 12,
+                   pointLabelFontSize : 19,
                    pointLabelFontFamily : "'Helvetica'",
                    pointLabelFontStyle : "bold",
                    showTooltips : true
