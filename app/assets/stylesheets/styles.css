@@ -117,7 +117,7 @@
   position: absolute;
   width: 500px;
   min-height: 200px;
-  top: 60%;
+  top: 30%;
   left: 50%;
   margin-left: -360px;
   background-color: rgba(255, 255, 240, 0.8);
@@ -179,13 +179,21 @@ canvas {
 }
 
 /*social icon styles*/
-span {
+.twitter {
   float: right;
   margin: 0 2px;
 }
 
 .tumblr{
+  float: right;
+  margin: 0 2px;
   margin-right: 100px;
+}
+
+.facebook{
+  float: right;
+  margin: 0 2px;
+  line-height: 30px;
 }
 
 #sign_in {
