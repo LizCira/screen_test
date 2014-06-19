@@ -12,7 +12,7 @@ var radarChartData = {
     {
       fillColor : "rgba(255,0,0,0.5)",
       strokeColor : "rgba(204,0,0,1)",
-      pointColor : "rgba(96,96,64,1)",
+      pointColor : "rgba(96,96,96,1)",
       pointStrokeColor : "#fff",
       data : cdata
     }
@@ -130,6 +130,10 @@ function setEventListeners(){
 
 $(function(){
 
+  $('.tlt').textillate({
+      // loop: true
+  });
+
   setEventListeners();
   chartShell();
 
@@ -143,4 +147,3 @@ $(function(){
     });
   });
 });
-
