@@ -1,5 +1,8 @@
+<% if user_signed_in? %>
+
 <header>
   <h1>SCREEN TEST</h1>
+  <h3>A Personality Assessment Based On Your Favorite Movies.</h3>
   <a href="http://www.tumblr.com/share" title="Share on Tumblr" style="display:inline-block; text-indent:-9999px; overflow:hidden; width:129px; height:20px; background:url('http://platform.tumblr.com/v1/share_3.png') top left no-repeat transparent;">Share on Tumblr</a>
 
   <a href="https://twitter.com/share" class="twitter-share-button" data-dnt="true" data-count="none" data-via="twitterapi">Tweet</a>
@@ -8,8 +11,6 @@
   <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-type="button"></div>
 
 </header>
-
-<% if user_signed_in? %>
 
   <div class="content_main">
 
@@ -96,4 +97,16 @@
 
 <% else %>
   Must be Signed in
+
+  <div id="greeting">
+    <h1 class="tlt">WELCOME TO SCREEN TEST</h1>
+    <h3 class="tlt">A Personality Assessment Based On Your Favorite Movies.</h3>
+  </div>
+
+
 <% end %>
+
+
+
+
+

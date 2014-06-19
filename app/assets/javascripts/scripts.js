@@ -128,6 +128,12 @@ function setEventListeners(){
 
 // ***************Document Ready****************
 
+$(function () {
+    $('.tlt').textillate({
+        // loop: true
+    });
+})
+
 $(function(){
 
   setEventListeners();
@@ -143,4 +149,3 @@ $(function(){
     });
   });
 });
-
