@@ -83,11 +83,6 @@
   padding: 10px;
 }
 
-#snapped_likes {
-  border: 2px black;
-
-}
-
 .key_dialog:hover {
   cursor: pointer;
 }
