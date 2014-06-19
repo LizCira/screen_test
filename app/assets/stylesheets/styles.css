@@ -154,7 +154,7 @@ canvas {
   margin-top: -40px;
 }
 
-p{
+.instruction{
   line-height: .5em;
   font-color: gray;
 }
