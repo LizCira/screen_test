@@ -83,9 +83,32 @@
   padding: 10px;
 }
 
+#snapped_likes {
+  border: 2px black;
+
+}
 
 .key_dialog:hover {
   cursor: pointer;
+}
+
+h1 {
+  font-family: 'PT Sans Narrow', sans-serif;
+  color: red;
+}
+
+body {
+ font-family: 'PT Sans Narrow', sans-serif;
+ background-color: #c5c5c5; 
+}
+
+header {
+  background-color: #e8e8e8;
+  height: 100px;
+  width:100%;
+  font-size: 30px;
+  border: 2px black;
+  letter-spacing: -1px;
 }
 
 /*style="width: 50px; height: 100px;" */
