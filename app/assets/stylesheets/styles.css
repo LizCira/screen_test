@@ -158,5 +158,12 @@ canvas {
   line-height: .5em;
   font-color: gray;
 }
-/*style="width: 50px; height: 100px;" */
 
+/*social icon styles*/
+span {
+  float: right;
+  margin: 0 2px;
+}
+.tumblr{
+  margin-right: 100px;
+}
