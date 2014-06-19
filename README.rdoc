@@ -8,7 +8,7 @@ A user is presented with a range of movies drawn from the top 250 as voted on by
 
 **Try Out Screen Test on Heroku!**
 
-http://murmuring-brook-8348.herokuapp.com/
+[http://murmuring-brook-8348.herokuapp.com/](http://murmuring-brook-8348.herokuapp.com/)
 
 **Written in:**
 
@@ -23,12 +23,17 @@ http://murmuring-brook-8348.herokuapp.com/
 * Devise (3.2.4) for secure user authentication.
 
 * httparty (0.13.1) for API interface.
+* rails_12_factor for Heroku upload.
 
 **API's **
 
 Screen Test runs off of Brian Fritz's excellent **OMDBAPI**, which accesses IMDB's movie archive: 
 
 [http://www.omdbapi.com/](http://www.omdbapi.com/)
+
+However, due to conflicts with Heroku, movie poster images are accessed via Rotten Tomatoes API:
+
+[http://developer.rottentomatoes.com/](http://developer.rottentomatoes.com/)
 
 We also rely on Mattias Ostmar's worldview text analysis classification set, made accessible via the **uClassify** API here: 
 
@@ -38,18 +43,26 @@ We also rely on Mattias Ostmar's worldview text analysis classification set, mad
 
 A core team goal was to gain experience with Javascript and to keep as much our code client side as possible. To that end, we use:
 
-	 Chart.js -- Radar Chart data visualization
-	 	http://chartjs.org/
-	 	
 	 jQuery JavaScript Library v1.11.1
  	 	http://jquery.com/
+
+	 Chart.js -- Radar Chart data visualization
+	 	http://chartjs.org/
  	 	
  	 jQuery UI - v1.10.4 -- Drag and drop animation
 	 	http://jqueryui.com
 	 	
 	Underscore.js 1.6.0 -- Underscore for templating movie cards
 	    http://underscorejs.org
-
+	    
+	 textillate.js -- Splash screen animation
+ 		http://jschr.github.com/textillate
+ 		
+ 	Lettering.JS 0.6.1 -- Dependency for textillate
+ 	
+ 	Animate.css - A dependency for textillate 
+ 		http://daneden.me/animate
+ 		
 **Database Creation and Initialzation**
 
 	rake db:create
@@ -57,14 +70,10 @@ A core team goal was to gain experience with Javascript and to keep as much our 
 	rake db: migrate
 
 	rake db:seed
-	
-**ERD**
-
-WE NEED THE DIAGRAM!
 
 **About The Text Analytics**
 
-Our text analytics system was written by the media/ text sentiment specialist [Mattias Ostmar](http://mattiasostmar.wordpress.com/). If you like text analytics, definitely check out hsi blog, since he has a bunch of cool projects going on. 
+Our text analytics system was written by the media/ text sentiment specialist [Mattias Ostmar](http://mattiasostmar.wordpress.com/). If you like text analytics, definitely check out hsi blog, since he has a bunch of cool projects going on. He was kind enough to correspond with us to clarify definitions of the algorithm classifications.
 
 This system itself is based on Don Beck's Spiral Dynamics vMemes and John Marshall Roberts Worldviews, which the curious can read more about here: [http://en.wikipedia.org/wiki/Spiral_Dynamics#vMEMEs=](http://en.wikipedia.org/wiki/Spiral_Dynamics#vMEMEs=) 
 
