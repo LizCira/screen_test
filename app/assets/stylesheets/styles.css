@@ -21,6 +21,7 @@
   width: 650px;
   height: 650px;
   border: 1px solid #333;
+  text-align: center;
 
 }
 
@@ -120,7 +121,7 @@
   left: 50%;
   margin-left: -360px;
   background-color: ivory;
-  border: 2px solid green;
+  border: 2px solid red;
   border-radius: 20px;
   font-size: 1em;
   padding: 10px;
@@ -137,7 +138,7 @@ h1 {
 
 body {
  font-family: 'PT Sans Narrow', sans-serif;
- background-color: #c5c5c5; 
+ background-color: #c5c5c5;
 }
 
 header {
@@ -153,5 +154,9 @@ canvas {
   margin-top: -40px;
 }
 
+.instruction{
+  line-height: .5em;
+  font-color: gray;
+}
 /*style="width: 50px; height: 100px;" */
 
