@@ -10,18 +10,23 @@ var radarChartData = {
   labels : ["Absolutistic","Achievist","Exploitative","Instinctive","Relativistic","Systemic","Tribalistic"],
    datasets : [
     {
-      fillColor : "rgba(151,187,205,0.5)",
+      fillColor : "rgba(0,191,255,0.5)",
       strokeColor : "rgba(151,187,205,1)",
       pointColor : "rgba(151,187,205,1)",
       pointStrokeColor : "#fff",
-      scaleFontFamily : "'Times'",
       data : cdata
     }
   ]
 };
 
 
-  var myRadar = new Chart(document.getElementById("canvas").getContext("2d")).Radar(radarChartData,{scaleShowLabels : false, pointLabelFontSize : 10});
+  var myRadar = new Chart(document.getElementById("canvas").getContext("2d")).Radar
+  (radarChartData,{scaleShowLabels : false,
+                   pointLabelFontSize : 12,
+                   pointLabelFontFamily : "'Helvetica'",
+                   pointLabelFontStyle : "bold",
+                   showTooltips : true
+                 });
 }
 
 
