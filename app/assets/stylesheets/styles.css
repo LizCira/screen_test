@@ -173,13 +173,21 @@ canvas {
 }
 
 /*social icon styles*/
-span {
+.twitter {
   float: right;
   margin: 0 2px;
 }
 
 .tumblr{
+  float: right;
+  margin: 0 2px;
   margin-right: 100px;
+}
+
+.facebook{
+  float: right;
+  margin: 0 2px;
+  line-height: 30px;
 }
 
 #sign_in {
