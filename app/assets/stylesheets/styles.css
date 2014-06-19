@@ -6,6 +6,7 @@
 
 .col_left{
   float:left;
+  width: 302px;
   display: inline-block;
 }
 
@@ -17,22 +18,22 @@
 
 #radar_chart {
   float: left;
-  width: 550px;
-  height: 550px;
+  width: 650px;
+  height: 650px;
   border: 1px solid #333;
 
 }
 
 #trash_bin {
   /*float: left;*/
-  width: 400px;
+  /*width: 350px;*/
   height: 110px;
   border: 1px solid #333;
 }
 
 #film_feed {
 /*  float: left;*/
-  width: 400px;
+  /*width: 350px;*/
   text-align: center;
   border: 1px solid #333;
 }
@@ -56,6 +57,7 @@
   border-radius: 10px;
   height: 110px;
   background-color: #666;
+  margin-bottom: 5px;
 }
 
 .film_card img{
@@ -68,8 +70,11 @@
 
 .film_title{
   font-size: 20px;
-  margin-top: 10px;
+  margin-top: 18px;
   font-weight: bold;
+  color: white;
+}
+.film_year{
   color: white;
 }
 
@@ -93,8 +98,18 @@
   width: 30px;
   height: 40px;
   float: left;
-  margin-left: 50px;
+  margin-left: 20px;
   margin-top: 5px;
+  margin-right: 5px;
+}
+
+.liked_title{
+  margin-top: 2px;
+  color: white;
+}
+
+.liked_year{
+  color: white;
 }
 
 .key_dialog {
