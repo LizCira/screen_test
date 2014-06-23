@@ -107,6 +107,20 @@ function setEventListeners(){
   });
 
 
+  //********* The reset button ************
+  // $("#reset_button").on('click', function() {
+  //     cdata = [0,0,0,0,0,0,0];
+  //     chartShell();
+  //     likesCollection = new LikesCollection();
+  //     likesCollectionView = new LikesCollectionView(likesCollection, $("#like_tracker"));
+  //     likesCollectionView.render();
+  //     console.log(likesCollection)
+  //     return likesCollectionView;
+  //   });
+
+ $("#reset_button").on('click', function() {
+    location.reload();});
+
 
   // ********************* Drop Actions ********************
 
