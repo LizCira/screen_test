@@ -1,12 +1,13 @@
 
 
-function getChartScore(plot_text)
+function getChartScore(plot_text){
 $.ajax({
   url: '/data/new',
   type: 'GET',
   dataType: 'JSON',
-  data: plot_text,
+  data: plot_text
 })
+}
 
 function getMoviePlot(title){
  $.ajax({
@@ -19,8 +20,7 @@ function getMoviePlot(title){
     var plot = movieHash["Plot"];
     return plot;
   })
-
-
+    getChartScore(plot)
 }
 
 
