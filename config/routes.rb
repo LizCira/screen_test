@@ -2,6 +2,9 @@ Rails.application.routes.draw do
 
   root to: "welcome#index"
 
+  get "/data" => "data#index"
+  get "/data/new" => "data#new"
+
   devise_for :users
   resources :movies do
     resources :likes
