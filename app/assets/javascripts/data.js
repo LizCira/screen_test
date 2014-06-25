@@ -6,9 +6,15 @@ $.ajax({
   type: 'GET',
   dataType: 'JSON',
   data: plot_text
+}).done(function(chartDataArray){
+  console.log(chartDataArray);
+  cdata = chartDataArray;
+  chartShell();
+  return cdata;
 })
 }
 
+//badly need a title clean filter
 function getMoviePlot(title){
  $.ajax({
     url: 'http://www.omdbapi.com/?t=' + title + '&plot=full',
@@ -16,11 +22,16 @@ function getMoviePlot(title){
     dataType: "JSON",
     }).done(function(data){
     console.log(data);
-    var movieHash = data;
-    var plot = movieHash["Plot"];
+    // debugger
+    movieHash = data;
+    console.log("moviehash: " + movieHash);
+    console.log(movieHash["Plot"])
+    plot = {plot: movieHash["Plot"]}
+    getChartScore(plot);
     return plot;
+    // console.log(plot)
   })
-    getChartScore(plot)
+
 }
 
 
@@ -28,7 +39,6 @@ $(function(){
 
 $("#movie_title_button").on('click', function(){
   var title = $("#movie_title_field").val();
-  console.log(title);
   getMoviePlot(title);
 });
 
