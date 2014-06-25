@@ -39,6 +39,7 @@ $(function(){
 
 $("#movie_title_button").on('click', function(){
   var title = $("#movie_title_field").val();
+  var cleanTitle = title.replace(" ","%20");
   getMoviePlot(title);
 });
 
