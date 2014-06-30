@@ -258,7 +258,16 @@ movies.each do |title|
     title: movie_hash["Title"],
     poster: tomatoes_hash["movies"][0]["posters"]["profile"],
     year: movie_hash["Year"],
-    plot: movie_hash["Plot"]
+    plot: movie_hash["Plot"],
+    genre: movie_hash["Genre"]
     })
   sleep(0.7)
 end
+
+# test = Movie.all
+# dramas = []
+# test.each do |film|
+#   if film.genre.include?("Drama")
+#    dramas << film.plot
+#   end
+# end
