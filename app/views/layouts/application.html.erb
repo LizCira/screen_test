@@ -25,7 +25,7 @@
     Signed in as <%= current_user.email %>. Not you?
     <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
   <% else %>
-    <%= flash.now[:alert] %>
+    <%#= flash.now[:alert] %>
     <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
   <% end %>
 </div>
@@ -33,7 +33,7 @@
   <%= yield %>
 
 <footer>
-      <%= render 'layouts/footer' %>
+  <%= render 'layouts/footer' %>
 </footer>
 
 
