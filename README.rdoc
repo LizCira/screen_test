@@ -57,12 +57,12 @@ A core team goal was to gain experience with Javascript and to keep as much our 
 	http://underscorejs.org
 
 *textillate.js -- Splash screen animation
- 	http://jschr.github.com/textillate
+ http://jschr.github.com/textillate
 
 *Lettering.JS 0.6.1 -- Dependency for textillate
 
 *Animate.css - A dependency for textillate
- 	http://daneden.me/animate
+ http://daneden.me/animate
 
 ===Database Creation and Initialzation
 
