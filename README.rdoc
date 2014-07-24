@@ -1,24 +1,24 @@
-#Screen Test
+=Screen Test
 
 A student project app that analyzes a user's personality world view based on their favorite movies!
 
-###"Wow that's intense, how do you do that?"
+==="Wow that's intense, how do you do that?"
 
 A user is presented with a range of movies drawn from the top 250 as voted on by IMDB's audience. As the user keeps or discards movies, the IMDB plot synopses of these films are sent to a text analysis classifier written by Mattias Ostmar that returns "world view" value scores based on plot keywords. Because data visualization is fun, the cumulative scores of the user's selections are mapped in a radar graph, showing which world view they ultimately favor. The user is allowed to continue selecting movies after the initial data is sent, and the graph continues to modify.
 
-###Try Out Screen Test on Heroku!
+===Try Out Screen Test on Heroku!
 
-http://screentest.herokuapp.com/
+http://screentest.herokuapp.com
 
-####Written in:
+===Written in:
 
-* Ruby 1.9.3
+	*Ruby 1.9.3
 
-* Rails 4.1.0
+	*Rails 4.1.0
 
-* Activerecord (4.1.1) for database
+	*Activerecord (4.1.1) for database
 
-####Gem dependencies:
+===Gem dependencies:
 
 * Devise (3.2.4) for secure user authentication.
 
@@ -63,7 +63,7 @@ A core team goal was to gain experience with Javascript and to keep as much our 
 	Animate.css - A dependency for textillate
  	http://daneden.me/animate
 
-####Database Creation and Initialzation**
+####Database Creation and Initialzation
 
 `rake db:create`
 
