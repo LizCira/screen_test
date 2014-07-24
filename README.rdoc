@@ -8,7 +8,7 @@ A user is presented with a range of movies drawn from the top 250 as voted on by
 
 ###Try Out Screen Test on Heroku!
 
-[http://screentest.herokuapp.com/](http://screentest.herokuapp.com/)
+http://screentest.herokuapp.com/
 
 ####Written in:
 
