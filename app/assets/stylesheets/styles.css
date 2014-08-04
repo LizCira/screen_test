@@ -13,6 +13,8 @@
 .content_main {
   width: 1200px;
   margin: 0 auto;
+  height: 900px;
+  overflow: hidden;
 }
 
 
@@ -22,7 +24,6 @@
   height: 650px;
   border: 1px solid #333;
   text-align: center;
-
 }
 
 #trash_bin {
@@ -34,10 +35,8 @@
 }
 
 #film_feed {
-/*  float: left;*/
-  /*width: 350px;*/
   text-align: center;
-  border: 1px solid #333;
+  /*border: 1px solid #333;*/
 }
 
 
@@ -83,7 +82,7 @@
 #like_tracker{
   float: left;
   width: 244px;
-  min-height: 100px;
+  min-height: 360px;
 }
 
 #reset_button{

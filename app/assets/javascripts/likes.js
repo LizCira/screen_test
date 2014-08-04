@@ -79,7 +79,8 @@ LikesCollection.prototype.create = function(likeParams){
 }
 
 LikesCollection.prototype.replace = function(){
-  this.models.splice(0, 1);
+  var garbage = this.models.splice(0, 1);
+  delete garbage;
 }
 
 
