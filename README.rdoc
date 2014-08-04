@@ -1,69 +1,70 @@
-##Screen Test
+=Screen Test
 
 A student project app that analyzes a user's personality world view based on their favorite movies!
 
-**"Wow that's intense, how do you do that?"**
+==="Wow that's intense, how do you do that?"
 
 A user is presented with a range of movies drawn from the top 250 as voted on by IMDB's audience. As the user keeps or discards movies, the IMDB plot synopses of these films are sent to a text analysis classifier written by Mattias Ostmar that returns "world view" value scores based on plot keywords. Because data visualization is fun, the cumulative scores of the user's selections are mapped in a radar graph, showing which world view they ultimately favor. The user is allowed to continue selecting movies after the initial data is sent, and the graph continues to modify.
 
-**Try Out Screen Test on Heroku!**
+===Try Out Screen Test on Heroku!
 
-[http://screentest.herokuapp.com/](http://screentest.herokuapp.com/)
+http://screentest.herokuapp.com
 
-**Written in:**
+===Written in:
 
-* Ruby 1.9.3
+*Ruby 1.9.3
 
-* Rails 4.1.0
+*Rails 4.1.0
 
-* Activerecord (4.1.1) for database
+*Activerecord (4.1.1) for database
 
-**Gem dependencies:**
+===Gem dependencies:
 
 * Devise (3.2.4) for secure user authentication.
 
 * httparty (0.13.1) for API interface.
+
 * rails_12_factor for Heroku upload.
 
-**API's **
+===API's
 
-Screen Test runs off of Brian Fritz's excellent **OMDBAPI**, which accesses IMDB's movie archive:
+Screen Test runs off of Brian Fritz's excellent OMDBAPI, which accesses IMDB's movie archive:
 
-[http://www.omdbapi.com/](http://www.omdbapi.com/)
+www.omdbapi.com
 
 However, due to conflicts with Heroku, movie poster images are accessed via Rotten Tomatoes API:
 
-[http://developer.rottentomatoes.com/](http://developer.rottentomatoes.com/)
+http://developer.rottentomatoes.com
 
-We also rely on Mattias Ostmar's worldview text analysis classification set, made accessible via the **uClassify** API here:
+We also rely on Mattias Ostmar's worldview text analysis classification set, made accessible via the uClassify API here:
 
-[http://www.uclassify.com/browse/prfekt/Values](http://www.uclassify.com/browse/prfekt/Values)
+http://www.uclassify.com/browse/prfekt/Values
 
-**Javascript Libraries**
+===Javascript Libraries
 
 A core team goal was to gain experience with Javascript and to keep as much our code client side as possible. To that end, we use:
 
-	 jQuery JavaScript Library v1.11.1
- 	 	http://jquery.com/
+*jQuery JavaScript Library v1.11.1
+	http://jquery.com
 
-	 Chart.js -- Radar Chart data visualization
-	 	http://chartjs.org/
+*Chart.js -- Radar Chart data visualization
+	http://chartjs.org
 
- 	 jQuery UI - v1.10.4 -- Drag and drop animation
-	 	http://jqueryui.com
+*jQuery UI - v1.10.4 -- Drag and drop animation
+	http://jqueryui.com
 
-	Underscore.js 1.6.0 -- Underscore for templating movie cards
-	    http://underscorejs.org
+*Underscore.js 1.6.0 -- Underscore for templating movie cards
+	http://underscorejs.org
 
-	 textillate.js -- Splash screen animation
- 		http://jschr.github.com/textillate
+*textillate.js -- Splash screen animation
+ http://jschr.github.com/textillate
 
- 	Lettering.JS 0.6.1 -- Dependency for textillate
+*Lettering.JS 0.6.1 -- Dependency for textillate
 
- 	Animate.css - A dependency for textillate
- 		http://daneden.me/animate
+*Animate.css - A dependency for textillate
+ http://daneden.me/animate
 
-**Database Creation and Initialzation**
+===Database Creation and Initialzation
 
 	rake db:create
 
@@ -71,26 +72,24 @@ A core team goal was to gain experience with Javascript and to keep as much our 
 
 	rake db:seed
 
-**About The Text Analytics**
+===About The Text Analytics
 
-Our text analytics system was written by the media/ text sentiment specialist [Mattias Ostmar](http://mattiasostmar.wordpress.com/). If you like text analytics, definitely check out hsi blog, since he has a bunch of cool projects going on. He was kind enough to correspond with us to clarify definitions of the algorithm classifications.
+Our text analytics system was written by the media/ text sentiment specialist Mattias Ostmar http://mattiasostmar.wordpress.com . If you like text analytics, definitely check out hsi blog, since he has a bunch of cool projects going on. He was kind enough to correspond with us to clarify definitions of the algorithm classifications.
 
-This system itself is based on Don Beck's Spiral Dynamics vMemes and John Marshall Roberts Worldviews, which the curious can read more about here: [http://en.wikipedia.org/wiki/Spiral_Dynamics#vMEMEs=](http://en.wikipedia.org/wiki/Spiral_Dynamics#vMEMEs=)
+This system itself is based on Don Beck's Spiral Dynamics vMemes and John Marshall Roberts Worldviews, which the curious can read more about here: http://en.wikipedia.org/wiki/Spiral_Dynamics#vMEMEs=
 
-**About Us**
+===About Us
 
 We're all students at General Assembly's New York City April 2014 WDI program.
 
-Specifications for this project can be found here: [https://github.com/ga-students/WDI_NYC_Apr14_String/blob/master/w09/second_project.md](https://github.com/ga-students/WDI_NYC_Apr14_String/blob/master/w09/second_project.md)
+Specifications for this project can be found here: https://github.com/ga-students/WDI_NYC_Apr14_String/blob/master/w09/second_project.md
 
-**More about us:**
+===More about us:
 
-Our AGILE planning board has been made public, and can be found here: [https://trello.com/b/p4uhXOej/ga-wdi-project-2](https://trello.com/b/p4uhXOej/ga-wdi-project-2)
+Our AGILE planning board has been made public, and can be found here: https://trello.com/b/p4uhXOej/ga-wdi-project-2
 
 Joe Park
 
 Liz Goldstein
 
 Ben Ticsay
-
-Zack Levine

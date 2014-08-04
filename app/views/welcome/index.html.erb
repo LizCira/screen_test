@@ -1,19 +1,18 @@
 <% if user_signed_in? %>
 
-<header>
-    <span class="tumblr"><a href="http://www.tumblr.com/share" title="Share on Tumblr" style="display:inline-block; text-indent:-9999px; overflow:hidden; width:129px; height:20px; background:url('http://platform.tumblr.com/v1/share_3.png') top left no-repeat transparent;">Share on Tumblr</a></span>
-
-  <span class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-dnt="true" data-count="none" data-via="twitterapi">Tweet</a></span>
-  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-
-  <span class="facebook"><div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-type="button"></div></span>
-
-  <h1>SCREEN TEST</h1>
-  <h3>A Personality Assessment Based On Your Favorite Movies. || <%= link_to "Personality Quiz", root_path %> || <%= link_to "data", data_path %> </h3>
-
-</header>
-
   <div class="content_main">
+    <header>
+      <span class="tumblr"><a href="http://www.tumblr.com/share" title="Share on Tumblr" style="display:inline-block; text-indent:-9999px; overflow:hidden; width:129px; height:20px; background:url('http://platform.tumblr.com/v1/share_3.png') top left no-repeat transparent;">Share on Tumblr</a></span>
+
+      <span class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-dnt="true" data-count="none" data-via="twitterapi">Tweet</a></span>
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+      <span class="facebook"><div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-type="button"></div></span>
+
+      <h1>SCREEN TEST</h1>
+      <h3>A Personality Assessment Based On Your Favorite Movies.</h3>
+
+    </header>
 
     <div class="col_left">
       <div id="trash_bin">
@@ -21,43 +20,39 @@
         <div class="parenthesis">
           (Drag discard films here)
         </div>
-
       </div>
 
       <div id="film_feed">
-
       </div>
     </div>
 
     <div id="radar_chart">
 
-   <div class="instruction"> <p>Drag five films onto the graph to see what your taste in movies says about YOU</p>
+      <div class="instruction"> <p>Drag five films onto the graph to see what your taste in movies says about YOU</p>
 
-   <p>[Click Chart For More Info]</p>
- </div>
-
-      <canvas id="canvas" height="650" width="650" ></canvas>
-
+      <p>[Click Chart For More Info]</p>
     </div>
 
-    <div id="like_tracker">
+    <canvas id="canvas" height="650" width="650" ></canvas>
 
-      <div class="like_text">
-        <p>Choose</p>
-        <p>Five</p>
-        <p>Movies</p>
-      </div>
+  </div>
 
-      <div class="parenthesis">
-        <p>(Drag titles on left into the chart!)</p>
-      </div>
+  <div id="like_tracker">
 
+    <div class="like_text">
+      <p>Choose</p>
+      <p>Five</p>
+      <p>Movies</p>
     </div>
 
-    <div id="reset_button">
-      Click to reset selections.
+    <div class="parenthesis">
+      <p>(Drag titles on left into the chart!)</p>
     </div>
 
+  </div>
+
+  <div id="reset_button">
+    Click to reset selections.
   </div>
 
   <div class="key_dialog hidden">
@@ -129,8 +124,3 @@
 
 
 <% end %>
-
-
-
-
-

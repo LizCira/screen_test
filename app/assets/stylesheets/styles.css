@@ -55,10 +55,10 @@
   display: none;
 }
 .film_card {
-  border: 5px solid #999;
+  border: 4px dashed #CC3232;
   border-radius: 10px;
   height: 110px;
-  background-color: #666;
+  background-color: #FF9955;
   margin-bottom: 5px;
 }
 
@@ -74,10 +74,10 @@
   font-size: 20px;
   margin-top: 10px;
   font-weight: bold;
-  color: white;
+  color: black;
 }
 .film_year{
-  color: white;
+  color: #CC3232;
 }
 
 #like_tracker{
@@ -156,11 +156,11 @@ h3 {
 
 body {
  font-family: 'PT Sans Narrow', sans-serif;
- background-color: #c5c5c5;
+/* background: url("/assets/sos.png");*/
 }
 
 header {
-  background-color: #e8e8e8;
+ /* background-color: #e8e8e8;*/
   height: 125px;
   width:100%;
   font-size: 30px;
