@@ -107,19 +107,17 @@ function setEventListeners(){
   });
 
 
-  //********* reset button ************
-  // $("#reset_button").on('click', function() {
-  //     cdata = [0,0,0,0,0,0,0];
-  //     chartShell();
-  //     likesCollection = new LikesCollection();
-  //     likesCollectionView = new LikesCollectionView(likesCollection, $("#like_tracker"));
-  //     likesCollectionView.render();
-  //     retrun likesCollection;
-  //     return likesCollectionView;
-  //   });
+  // ********* reset button ************
+  $("#reset_button").on('click', function() {
+      cdata = [0,0,0,0,0,0,0];
+      chartShell();
+      likesCollection.models = [];
+      likesCollectionView.render();
+      $('#like_tracker').append(
+        "<div class='like_text'><p>Choose</p><p>Five</p><p>Movies</p></div><div class='parenthesis'><p>(Drag titles on left into the chart!)</p></div>"
+      ); 
+    });
 
- $("#reset_button").on('click', function() {
-    location.reload();});
 
 
   // ********************* Drop Actions ********************
