@@ -82,7 +82,7 @@
 #like_tracker{
   float: left;
   width: 244px;
-  min-height: 360px;
+  min-height: 400px;
 }
 
 #reset_button{
@@ -100,10 +100,11 @@
 
 
 .liked_card{
-  border: 1px solid #999;
+  border: 3px dashed #CC3232;
   border-radius: 10px;
+  margin-bottom: 2px;
   height: 70px;
-  background-color: #666;
+  background-color: #FF9955;
 }
 
 .liked_card img{
