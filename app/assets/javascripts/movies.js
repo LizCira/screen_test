@@ -42,9 +42,12 @@ MoviesCollectionView.prototype.render = function(){
     movieView.el.draggable({
       stack: '#film_feed',
       cursor: 'move',
-      revert: true,
-      start: function(event, ui) {$(this).css("z-index", 500)},
-      stop: function(event, ui) {$(this).css('z-index', 0)}
+      revert: 'invalid',
+      helper: 'clone',
+      scroll: true,
+      start: function(event, ui) {$(this).css('visibility', 'hidden')},
+      drag: function(event, ui) {$(ui.helper).css('width', '300px')},
+      stop: function(event, ui) {if ($(this).parent().attr('id') === 'film_feed') {$(this).css('visibility', 'visible');}}
     });
   });
 }

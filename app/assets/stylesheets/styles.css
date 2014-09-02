@@ -1,3 +1,7 @@
+canvas {
+  max-width: 650px;
+  max-height: 650px;
+}
 /* UTIL */
 
 .clear{
@@ -37,6 +41,8 @@
 #film_feed {
   text-align: center;
   /*border: 1px solid #333;*/
+  height: 500px;
+  overflow: auto;
 }
 
 
