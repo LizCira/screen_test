@@ -3,30 +3,32 @@
 //it is referenced by calling chartShell in doc load
 //and it sets initial chart values to zero
 var cdata = [0,0,0,0,0,0,0];
+var myRadar;
 
 //loads the chart on doc load
-function chartShell(){
-var radarChartData = {
-  labels : ["Absolutistic","Achievist","Exploitative","Instinctive","Relativistic","Systemic","Tribalistic"],
-   datasets : [
-    {
-      fillColor : "rgba(255,0,0,0.5)",
-      strokeColor : "rgba(204,0,0,1)",
-      pointColor : "rgba(96,96,96,1)",
-      pointStrokeColor : "#fff",
-      data : cdata
-    }
-  ]
-};
-
-
-  var myRadar = new Chart(document.getElementById("canvas").getContext("2d")).Radar
-  (radarChartData,{scaleShowLabels : false,
-                   pointLabelFontSize : 19,
-                   pointLabelFontFamily : "'Helvetica'",
-                   pointLabelFontStyle : "bold",
-                   showTooltips : true
-                 });
+function chartShell(testData){
+  var radarChartData = {
+    labels : ["Absolutistic","Achievist","Exploitative","Instinctive","Relativistic","Systemic","Tribalistic"],
+     datasets : [
+      {
+        fillColor : "rgba(255,0,0,0.5)",
+        strokeColor : "rgba(204,0,0,1)",
+        pointColor : "rgba(96,96,96,1)",
+        pointStrokeColor : "#fff",
+        data : cdata
+        // data : testData //jane
+      }
+    ]
+  };
+  var radarChartOptions = { scaleShowLabels : false,
+                            pointLabelFontSize : 19,
+                            pointLabelFontFamily : "'Helvetica'",
+                            pointLabelFontStyle : "bold",
+                            showTooltips : true,
+                            scaleBeginAtZero : true
+                          };
+  var ctx = $("#canvas").get(0).getContext("2d");
+  myRadar = new Chart(ctx).Radar(radarChartData, radarChartOptions);
 }
 
 
@@ -51,9 +53,10 @@ function generateChart() {
     type: 'GET',
     dataType: "JSON",
   }).done(function(chartDataArray){
-    console.log(chartDataArray);
-    cdata = chartDataArray;
-    chartShell();
+    console.log(chartDataArray); //originalcode
+    cdata = chartDataArray; //originalcode
+    chartShell(); // originalcode
+    // return chartShell(chartDataArray);
     return cdata;
     //cdata is passed to the chart function
     //the API response is parsed in movies controller
@@ -109,8 +112,9 @@ function setEventListeners(){
 
   // ********* reset button ************
   $("#reset_button").on('click', function() {
-      cdata = [0,0,0,0,0,0,0];
-      chartShell();
+      cdata = [0,0,0,0,0,0,0]; //originalcode
+      chartShell([0,0,0,0,0,0,0]); //originalcode
+
       likesCollection.models = [];
       likesCollectionView.render();
       $('#like_tracker').append(
@@ -147,7 +151,7 @@ $(function(){
   });
 
   setEventListeners();
-  chartShell();
+  chartShell([0,0,0,0,0,0,0]);
 
   moviesCollectionView = new MoviesCollectionView(moviesCollection, $("#film_feed"));
   likesCollectionView = new LikesCollectionView(likesCollection, $("#like_tracker"));
